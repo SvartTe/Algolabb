@@ -17,7 +17,9 @@ public class AngloTrainer {
 	// use this to verify loadDictionary
 	private void dumpDict() {
 	    // Print out the dictionary at the screen.
-          // ... define!
+		for(String g : dictionary) {
+			System.out.println(g);
+		}
 	}
 
 	private void loadDictionary( String fileName ) {
@@ -94,7 +96,10 @@ public class AngloTrainer {
 	}
 
     public static void main(String[] args) {
-        // ... define!
+    	try {
+			AngloTrainer trainer = new AngloTrainer("dictionary.txt");
+		} catch (IOException e) {e.printStackTrace();}
+        
     }
 }
 
