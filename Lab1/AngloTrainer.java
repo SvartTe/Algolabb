@@ -19,7 +19,9 @@ public class AngloTrainer {
 	// use this to verify loadDictionary
 	private void dumpDict() {
 	    // Print out the dictionary at the screen.
-          // ... define!
+		for(String g : dictionary) {
+			System.out.println(g);
+		}
 	}
 
 	private void loadDictionary( String fileName ) throws IOException {
@@ -105,20 +107,17 @@ public class AngloTrainer {
 		System.out.println(includes("",null));		//t
 		System.out.println(includes("abc",null));   //t
 	}
+	
+	private void game() {
+		for(;;){
+			
+		}
+	}
 
     public static void main(String[] args) {
-        // ... define!
+    	try {
+			AngloTrainer trainer = new AngloTrainer("dictionary.txt");
+	    	trainer.game();
+		} catch (IOException e) {e.printStackTrace();}
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
