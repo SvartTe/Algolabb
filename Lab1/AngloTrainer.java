@@ -1,15 +1,17 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
-// Author(s): Seabstian Lindgren & Robert Larsson
-// Email:	seblind@student.chalmers.se & robla@student.chalmers.se
-// Date:	
+//Author(s): Seabstian Lindgren & Robert Larsson
+//Email:	seblind@student.chalmers.se & robla@student.chalmers.se
+//Date:	
 
 public class AngloTrainer {
-	// ...
+	ArrayList<String> dictionary;
 
 	public AngloTrainer(String dictionaryFile) throws IOException {
-	    // ... define!
+	    dictionary = new ArrayList<String>();
+	    
 	}
 
 	// use this to verify loadDictionary
