@@ -94,23 +94,17 @@ public class AngloTrainer {
 		System.out.println(includes("",null));		//t
 		System.out.println(includes("abc",null));   //t
 	}
+	
+	private void game() {
+		for(;;){
+			
+		}
+	}
 
     public static void main(String[] args) {
     	try {
 			AngloTrainer trainer = new AngloTrainer("dictionary.txt");
+	    	trainer.game();
 		} catch (IOException e) {e.printStackTrace();}
-        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
