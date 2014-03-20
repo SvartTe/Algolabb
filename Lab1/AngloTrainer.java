@@ -8,9 +8,12 @@ import java.util.Random;
 
 public class AngloTrainer {
 	ArrayList<String> dictionary;
+	private static String fileName = "dictionary.txt";
+	private String randLetters;
 
 	public AngloTrainer(String dictionaryFile) throws IOException {
 	    dictionary = new ArrayList<String>();
+	    loadDictionary(fileName);
 	    
 	}
 
@@ -97,7 +100,9 @@ public class AngloTrainer {
 	
 	private void game() {
 		for(;;){
-			
+			System.out.println(this.dictionary.size() + " words loaded from " + fileName);
+			System.out.println("The random letters are: " + randLetters);
+			System.out.println("Try to build as many letters from these words as you can!");
 		}
 	}
 
