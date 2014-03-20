@@ -1,5 +1,5 @@
-// Author(s):
-// Email:	
+// Author(s): Seabstian Lindgren & Robert Larsson
+// Email:	seblind@student.chalmers.se
 // Date:	
 
 public class AngloTrainer {
