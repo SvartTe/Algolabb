@@ -48,6 +48,7 @@ public class WordLists {
 	
 	private String reverse(String s) {
 	    // define!
+		return s;
 	}
 	
 	private void computeWordFrequencies() {
