@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,7 +13,7 @@ public class AngloTrainer {
 
 	public AngloTrainer(String dictionaryFile) throws IOException {
 	    dictionary = new ArrayList<String>();
-	    
+	    loadDictionary(dictionaryFile);
 	}
 
 	// use this to verify loadDictionary
@@ -20,21 +22,32 @@ public class AngloTrainer {
           // ... define!
 	}
 
-	private void loadDictionary( String fileName ) {
-	    // Read the dictionary into a suitable container.
-	    // The file is a simple text file. One word per line.
-          // ... define!
+	private void loadDictionary( String fileName ) throws IOException {
+		// Read the dictionary into a suitable container.
+		// The file is a simple text file. One word per line.
+		FileReader file = new FileReader(fileName);
+		BufferedReader reader = new BufferedReader(file);
+		String word = reader.readLine();
+		
+		// Check to see if we just managed to read a word from the file,
+		// return from function if we didn't.
+		if (word == null)
+			return;
+		do {
+			dictionary.add(word);
+			word = reader.readLine();
+		} while (word != null);
 	}
 
 	private String randomLetters( int length ) {
-	    // this makes vovels a little more likely
-	    String letters = "aabcdeefghiijklmnoopqrstuuvwxyyz";  
-	    StringBuffer buf = new StringBuffer(length);
-	    Random randomGenerator = new Random();
-	    for ( int i = 0; i < length; i++ ) 
-		    buf.append( letters.charAt(randomGenerator.nextInt(letters.length())));
-	
-	    return buf.toString();
+		// this makes vovels a little more likely
+		String letters = "aabcdeefghiijklmnoopqrstuuvwxyyz";  
+		StringBuffer buf = new StringBuffer(length);
+		Random randomGenerator = new Random();
+		for ( int i = 0; i < length; i++ ) 
+			buf.append( letters.charAt(randomGenerator.nextInt(letters.length())));
+		
+		return buf.toString();
 	}
 	
 	
