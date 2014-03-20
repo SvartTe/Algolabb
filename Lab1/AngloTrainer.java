@@ -10,6 +10,7 @@ import java.util.Random;
 
 public class AngloTrainer {
 	ArrayList<String> dictionary;
+	int longestWord;
 
 	public AngloTrainer(String dictionaryFile) throws IOException {
 	    dictionary = new ArrayList<String>();
@@ -24,6 +25,11 @@ public class AngloTrainer {
 		}
 	}
 
+	/**
+	 * Fills dictionary with words from the file fileName
+	 * @param fileName
+	 * @throws IOException
+	 */
 	private void loadDictionary( String fileName ) throws IOException {
 		// Read the dictionary into a suitable container.
 		// The file is a simple text file. One word per line.
@@ -33,12 +39,17 @@ public class AngloTrainer {
 		
 		// Check to see if we just managed to read a word from the file,
 		// return from function if we didn't.
-		if (word == null)
-			return;
+		if (word == null) {
+			reader.close();
+			throw new IOException("The file is empty, long live the file!");
+		}
 		do {
 			dictionary.add(word);
+			if (word.length() > longestWord)
+				longestWord = word.length();
 			word = reader.readLine();
 		} while (word != null);
+		reader.close();
 	}
 
 	private String randomLetters( int length ) {
