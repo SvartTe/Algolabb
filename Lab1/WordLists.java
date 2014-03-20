@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.io.Reader;
 
-// Author(s):
+// Author(s): Robert Larsson & Sebastian Lindgren
 // Version: 
 // Date:	
 
