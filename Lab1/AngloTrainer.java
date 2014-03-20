@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 // Author(s): Seabstian Lindgren & Robert Larsson
 // Email:	seblind@student.chalmers.se
 // Date:	
