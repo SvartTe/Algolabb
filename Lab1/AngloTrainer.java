@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.util.Random;
+
 // Author(s):
 // Email:	
 // Date:	
@@ -25,6 +28,7 @@ public class AngloTrainer {
 	    // this makes vovels a little more likely
 	    String letters = "aabcdeefghiijklmnoopqrstuuvwxyyz";  
 	    StringBuffer buf = new StringBuffer(length);
+	    Random randomGenerator = new Random();
 	    for ( int i = 0; i < length; i++ ) 
 		    buf.append( letters.charAt(randomGenerator.nextInt(letters.length())));
 	
