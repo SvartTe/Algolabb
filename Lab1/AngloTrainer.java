@@ -142,8 +142,10 @@ public class AngloTrainer {
 			// Visar sig att man var tvungen att göra jämförelsen med includes
 			// åt andra hållet. Dvs Långa listan först.
 			if(includes(randLetters, temp))
+				// TODO Check if the word is in the dictionary
 				System.out.println("Ok!");
 			else {
+				// TODO Give the player a piece of our mind for failing
 				System.out.println("Nope, didn't work!");
 			}
 		}
