@@ -22,6 +22,7 @@ public class AngloTrainer {
 	    dictionary = new ArrayList<String>();
 	    loadDictionary(dictionaryFile);
 	    this.dictionaryFile = dictionaryFile;
+	    randLetters = randomLetters(longestWord);
 	    reader = new Scanner(System.in);
 	}
 
@@ -136,10 +137,14 @@ public class AngloTrainer {
 		System.out.println("The random letters are: " + randLetters);
 		System.out.println("Try to build as many letters from these words as you can!");
 		for(;;){
-			if(includes(reader.nextLine(), randLetters))
+			String temp = reader.nextLine();
+			System.out.println(temp);
+			// Visar sig att man var tvungen att göra jämförelsen med includes
+			// åt andra hållet. Dvs Långa listan först.
+			if(includes(randLetters, temp))
 				System.out.println("Ok!");
 			else {
-				
+				System.out.println("Nope, didn't work!");
 			}
 		}
 	}
