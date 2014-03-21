@@ -57,6 +57,8 @@ public class AngloTrainer {
 				longestWord = word.length();
 			word = reader.readLine();
 		} while (word != null);
+		// Print out the length of the longest word for debug-purposes
+		System.out.println("Longest word in dictionary: " + longestWord);
 		reader.close();
 	}
 
@@ -128,6 +130,8 @@ public class AngloTrainer {
 	}
 	
 	private void game() {
+		// TODO Ordna så randomletters sätts
+		// TODO Logik för ordtestning
 		System.out.println(this.dictionary.size() + " words loaded from " + dictionaryFile);
 		System.out.println("The random letters are: " + randLetters);
 		System.out.println("Try to build as many letters from these words as you can!");
