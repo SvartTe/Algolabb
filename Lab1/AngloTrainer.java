@@ -2,31 +2,36 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeSet;
 
 
 //Author(s): Seabstian Lindgren & Robert Larsson
-//Email:	seblind@student.chalmers.se & robla@student.chalmers.se
-//Date:	
+//Email:	 seblind@student.chalmers.se & robla@student.chalmers.se
+//Date:		 2014-03-23
 
 public class AngloTrainer {
-	TreeSet<String> dictionary;
+	// Use a treeset to organize dictionary alphabetically
+	private TreeSet<String> dictionary;
 	private String randLetters;
 	private String sortLetters;
 	private String dictionaryFile;
 	private Scanner reader;
 	private int longestWord;
 
+	/**
+	 * 
+	 * @param dictionaryFile Name of dictionaryfile to load
+	 * @throws IOException If dictionaryfile not found or empty
+	 */
 	public AngloTrainer(String dictionaryFile) throws IOException {
 	    dictionary = new TreeSet<String>();
 	    loadDictionary(dictionaryFile);
 	    this.dictionaryFile = dictionaryFile;
 	    randLetters = randomLetters(longestWord);
-	    char[] temp = randLetters.toCharArray();
-	    Arrays.sort(temp);
-	    sortLetters = new String(temp);
+	    sortLetters = sortLetters(randLetters);
 	    reader = new Scanner(System.in);
 	}
 
@@ -40,7 +45,7 @@ public class AngloTrainer {
 
 	/**
 	 * Fills dictionary with words from the file fileName
-	 * @param fileName
+	 * @param fileName Name of the dictionaryfile to load
 	 * @throws IOException If the filename does not exist or is empty
 	 */
 	private void loadDictionary( String fileName ) throws IOException {
@@ -134,29 +139,54 @@ public class AngloTrainer {
 		System.out.println(includes("abc",null));   //t
 	}
 	
+	/**
+	 * Gameloop, handles logic of the game, input etc.
+	 */
 	private void game() {
-		// TODO Ordna så randomletters sätts
-		// TODO Logik för ordtestning
 		System.out.println(this.dictionary.size() + " words loaded from " + dictionaryFile);
 		System.out.println("The random letters are: " + randLetters);
 		System.out.println("Try to build as many letters from these words as you can!");
 		for(;;){
-			// Take input into a array so that it can be sorted.
-			char[] inputWord = reader.nextLine().toCharArray(); 
-			Arrays.sort(inputWord);
-			String sortedWord = new String(inputWord);
+			// Take input and then sort it alphabetically into separate variable
+			String inputWord = reader.nextLine(); 
+			String sortedWord = sortLetters(inputWord);
 			
-			System.out.println(sortedWord);
-			// Visar sig att man var tvungen att göra jämförelsen med includes
-			// åt andra hållet. Dvs Långa listan först.
-			if(includes(sortLetters, sortedWord))
-				// TODO Check if the word is in the dictionary
-				System.out.println("Ok!");
-			else {
-				// TODO Give the player a piece of our mind for failing
-				System.out.println("Nope, didn't work!");
+			if(includes(sortLetters, sortedWord)) {
+				if (dictionary.contains(new String(inputWord))) {
+					// Word was in the dictionary, that's good.
+					System.out.println("Ok!");
+				} else {
+					// Word wasn't in the dictionary
+					System.out.println("Your suggestion was not found "
+									 + "in the dictionary.");
+					break;
+				}
+			} else {
+				// User input letters not in given random string
+				System.out.println("Your suggestion did not match the given " 
+								 + "letters.");
+				break;
 			}
 		}
+		// Print out all legal combinations in dictionary
+		System.out.println("I found:");
+		for (String word : dictionary) {
+			String testingWord = sortLetters(word);
+			if (includes(sortLetters, testingWord)) {
+				System.out.println(word);
+			}
+		}
+	}
+	
+	/**
+	 * Takes a given string and returns it sorted in alphabetical order
+	 * @param input The string you wish to sort
+	 * @return The string sorted alphabetically
+	 */
+	private String sortLetters(String input) {
+		char[] sortingWord = input.toCharArray();
+		Arrays.sort(sortingWord);
+		return new String(sortingWord);
 	}
 
     public static void main(String[] args) {
