@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 
 //Author(s): Seabstian Lindgren & Robert Larsson
@@ -12,17 +12,21 @@ import java.util.Scanner;
 //Date:	
 
 public class AngloTrainer {
-	ArrayList<String> dictionary;
+	TreeSet<String> dictionary;
 	private String randLetters;
+	private String sortLetters;
 	private String dictionaryFile;
 	private Scanner reader;
 	private int longestWord;
 
 	public AngloTrainer(String dictionaryFile) throws IOException {
-	    dictionary = new ArrayList<String>();
+	    dictionary = new TreeSet<String>();
 	    loadDictionary(dictionaryFile);
 	    this.dictionaryFile = dictionaryFile;
 	    randLetters = randomLetters(longestWord);
+	    char[] temp = randLetters.toCharArray();
+	    Arrays.sort(temp);
+	    sortLetters = new String(temp);
 	    reader = new Scanner(System.in);
 	}
 
@@ -37,7 +41,7 @@ public class AngloTrainer {
 	/**
 	 * Fills dictionary with words from the file fileName
 	 * @param fileName
-	 * @throws IOException
+	 * @throws IOException If the filename does not exist or is empty
 	 */
 	private void loadDictionary( String fileName ) throws IOException {
 		// Read the dictionary into a suitable container.
@@ -137,11 +141,15 @@ public class AngloTrainer {
 		System.out.println("The random letters are: " + randLetters);
 		System.out.println("Try to build as many letters from these words as you can!");
 		for(;;){
-			String temp = reader.nextLine();
-			System.out.println(temp);
+			// Take input into a array so that it can be sorted.
+			char[] inputWord = reader.nextLine().toCharArray(); 
+			Arrays.sort(inputWord);
+			String sortedWord = new String(inputWord);
+			
+			System.out.println(sortedWord);
 			// Visar sig att man var tvungen att göra jämförelsen med includes
 			// åt andra hållet. Dvs Långa listan först.
-			if(includes(randLetters, temp))
+			if(includes(sortLetters, sortedWord))
 				// TODO Check if the word is in the dictionary
 				System.out.println("Ok!");
 			else {
