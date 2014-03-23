@@ -189,6 +189,9 @@ public class AngloTrainer {
 		return new String(sortingWord);
 	}
 
+	/**
+	 * 
+	 */
     public static void main(String[] args) {
     	try {
 			AngloTrainer trainer = new AngloTrainer("dictionary.txt");
