@@ -1,15 +1,31 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 
 // Author(s): Robert Larsson & Sebastian Lindgren
-// Version: 
-// Date:	
+// Version:   Neunundneunzig
+// Date:	  2014-03-23
 
 public class WordLists {
 	private Reader in = null;
+	private ArrayList<String> words;
 
-	public WordLists(String inputFileName) {
+	public WordLists(String inputFileName) throws IOException {
 	    // ... define!
+		// Looks like we are expected to setup the reader in and then use 
+		// getWord to read each word out of the file.
+		FileReader file = new FileReader(inputFileName);
+		in = new BufferedReader(file);
+		
+		// Kickstart reading words
+		String word = new String(getWord());
+		
+		do {
+			if (word != null)
+				words.add(getWord());
+		}while(word != null);
 	}
 	
 	private boolean isPunctuationChar(char c) {
