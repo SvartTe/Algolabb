@@ -43,24 +43,24 @@ public class AngloTrainer {
 		// Read the dictionary into a suitable container.
 		// The file is a simple text file. One word per line.
 		FileReader file = new FileReader(fileName);
-		BufferedReader reader = new BufferedReader(file);
-		String word = reader.readLine();
+		BufferedReader fileRead = new BufferedReader(file);
+		String word = fileRead.readLine();
 		
 		// Check to see if we just managed to read a word from the file,
 		// return from function if we didn't.
 		if (word == null) {
-			reader.close();
+			fileRead.close();
 			throw new IOException("The file is empty, long live the file!");
 		}
 		do {
 			dictionary.add(word);
 			if (word.length() > longestWord)
 				longestWord = word.length();
-			word = reader.readLine();
+			word = fileRead.readLine();
 		} while (word != null);
 		// Print out the length of the longest word for debug-purposes
 		System.out.println("Longest word in dictionary: " + longestWord);
-		reader.close();
+		fileRead.close();
 	}
 
 	private String randomLetters( int length ) {
