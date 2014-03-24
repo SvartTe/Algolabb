@@ -118,7 +118,9 @@ public class WordLists {
 			for(String g : seth){
 				buffWrite.write(g + "\t");
 				buffWrite.write(((TreeMap<String, Integer>) list).get(g));
+				buffWrite.newLine();
 			}
+			writer.close();
 		}
 	}
 
