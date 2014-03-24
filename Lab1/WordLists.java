@@ -3,6 +3,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -105,5 +107,23 @@ public class WordLists {
 		wl.computeBackwardsOrder();
 		
 		System.out.println("Finished!");
+	}
+	
+	class FrequencyComparator implements Comparator<String> {
+
+		Map<String, Integer> map;
+		
+		public FrequencyComparator(Map<String, Integer> incoming) {
+			map = incoming;
+		}
+		
+		public int compare(String arg0, String arg1) {
+			// TODO Auto-generated method stub
+			if (map.get(arg0) >= map.get(arg1))
+				return -1;
+			else
+				return 1;
+		}
+		
 	}
 }
