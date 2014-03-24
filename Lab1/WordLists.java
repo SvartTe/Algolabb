@@ -19,6 +19,7 @@ public class WordLists {
 	private Reader in = null;
 	private ArrayList<String> words;
 	private TreeMap<String, Integer> wordMap;
+	private TreeSet<String> reverseSet;
 
 	public WordLists(String inputFileName) throws IOException {
 		// ... define!
@@ -86,6 +87,7 @@ public class WordLists {
 				wordMap.put(word, 1);
 			}
 		}
+		// TODO Print to the file
 	}
 	
 
@@ -96,6 +98,9 @@ public class WordLists {
 
 	private void computeBackwardsOrder() {
 	    // define!
+		for (String word : words)
+			reverseSet.add(new StringBuilder(word).reverse().toString());
+		// TODO Print to the file
 	}
 	
 	private void writeToFile(String fileName, Object list) throws IOException {
