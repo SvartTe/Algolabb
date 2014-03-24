@@ -1,10 +1,15 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Collection;
+import java.util.NavigableSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -98,6 +103,27 @@ public class WordLists {
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
 		// TODO Print to the file
+	}
+	
+	private void writeToFile(String fileName, Object list) throws IOException {
+		FileWriter writer = new FileWriter(fileName);
+		BufferedWriter buffWrite = new BufferedWriter(writer);
+		if(list instanceof TreeSet){
+			for(String g : (TreeSet<String>) list){
+				buffWrite.write(g);
+				buffWrite.newLine();
+			}
+			writer.close();
+		}
+		else if(list instanceof TreeMap){
+			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
+			for(String g : seth){
+				buffWrite.write(g + "\t");
+				buffWrite.write(((TreeMap<String, Integer>) list).get(g));
+				buffWrite.newLine();
+			}
+			writer.close();
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
