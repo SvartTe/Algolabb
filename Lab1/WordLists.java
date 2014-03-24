@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 // Author(s): Robert Larsson & Sebastian Lindgren
 // Version:   Neunundneunzig
@@ -11,13 +12,15 @@ import java.util.ArrayList;
 public class WordLists {
 	private Reader in = null;
 	private ArrayList<String> words;
+	private TreeMap<String, Integer> wordMap;
 
 	public WordLists(String inputFileName) throws IOException {
-	    // ... define!
+		// ... define!
 		// Looks like we are expected to setup the reader in and then use 
 		// getWord to read each word out of the file.
 		FileReader file = new FileReader(inputFileName);
 		in = new BufferedReader(file);
+		wordMap = new TreeMap<String, Integer>();
 		
 		// Kickstart reading words
 		String word = new String(getWord());
@@ -68,7 +71,15 @@ public class WordLists {
 	}
 	
 	private void computeWordFrequencies() {
-          // define!
+		// define!
+		for (String word : words) {
+			if (wordMap.containsKey(word)) {
+				Integer i = wordMap.get(word);
+				i++;
+			} else {
+				wordMap.put(word, 1);
+			}
+		}
 	}
 	
 
