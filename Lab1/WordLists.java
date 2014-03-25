@@ -30,16 +30,18 @@ public class WordLists {
 		// getWord to read each word out of the file.
 		FileReader file = new FileReader(inputFileName);
 		in = new BufferedReader(file);
+		words = new ArrayList<>();
 		wordMap = new TreeMap<>();
-		freqMap = new TreeMap<>(new FrequencyComparator(freqMap));
+		freqMap = new TreeMap<>(new FrequencyComparator(wordMap));
+		reverseSet = new TreeSet<>();
 		
 		// Kickstart reading words
-		String word = new String(getWord());
+		String word = getWord();
 		
 		do {
 			if (word != null)
 				words.add(word);
-			word = new String(getWord());
+			word = getWord();
 		}while(word != null);
 	}
 	
@@ -98,7 +100,16 @@ public class WordLists {
 
 	private void computeFrequencyMap() {
 		// define!
-		
+		for (String word : words) {
+			if (freqMap.containsKey(word)) {
+				Integer i = wordMap.get(word);
+				i++;
+			} else {
+				freqMap.put(word, 1);
+			}
+		}
+		// TODO Print to the file
+		System.out.println(freqMap);
 	}
 	
 
@@ -131,7 +142,8 @@ public class WordLists {
 	}
 
 	public static void main(String[] args) throws IOException {
-		WordLists wl = new WordLists(args[0]);  // arg[0] contains the input file name
+		// DEBUG, set back to args[0] later
+		WordLists wl = new WordLists("ReadMe.txt");  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
@@ -148,7 +160,6 @@ public class WordLists {
 		}
 		
 		public int compare(String arg0, String arg1) {
-			// TODO Auto-generated method stub
 			if (map.get(arg0) >= map.get(arg1))
 				return -1;
 			else
