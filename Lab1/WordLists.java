@@ -158,6 +158,7 @@ public class WordLists {
 	}
 
 	public static void main(String[] args) throws IOException {
+		// DEBUG, set back to args[0] later
 		WordLists wl = new WordLists("provtext.txt");  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
