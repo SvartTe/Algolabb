@@ -137,7 +137,7 @@ public class WordLists {
 			if(list.equals(wordMap)){	
 				for(String g : seth){
 					buffWrite.write(g + "\t");
-					buffWrite.write((String) ((TreeMap) list).get(g));
+					buffWrite.write((int) ((TreeMap) list).get(g));
 					buffWrite.newLine();
 				}
 			}
