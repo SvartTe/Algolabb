@@ -22,6 +22,7 @@ public class WordLists {
 	private ArrayList<String> words;
 	private TreeMap<String, Integer> wordMap;
 	private TreeSet<String> reverseSet;
+	private TreeMap<String, Integer> freqMap;
 
 	public WordLists(String inputFileName) throws IOException {
 		// ... define!
@@ -29,14 +30,16 @@ public class WordLists {
 		// getWord to read each word out of the file.
 		FileReader file = new FileReader(inputFileName);
 		in = new BufferedReader(file);
-		wordMap = new TreeMap<String, Integer>();
+		wordMap = new TreeMap<>();
+		freqMap = new TreeMap<>(new FrequencyComparator(freqMap));
 		
 		// Kickstart reading words
 		String word = new String(getWord());
 		
 		do {
 			if (word != null)
-				words.add(getWord());
+				words.add(word);
+			word = new String(getWord());
 		}while(word != null);
 	}
 	
@@ -94,12 +97,13 @@ public class WordLists {
 	
 
 	private void computeFrequencyMap() {
-          // define!
+		// define!
+		
 	}
 	
 
 	private void computeBackwardsOrder() {
-	    // define!
+		// define!
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
 		// TODO Print to the file
