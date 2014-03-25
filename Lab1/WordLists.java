@@ -90,6 +90,7 @@ public class WordLists {
 			if (wordMap.containsKey(word)) {
 				Integer i = wordMap.get(word);
 				i++;
+				wordMap.put(word, i);
 			} else {
 				wordMap.put(word, 1);
 			}
@@ -101,16 +102,18 @@ public class WordLists {
 
 	private void computeFrequencyMap() {
 		// define!
-		for (String word : words) {
+/*		for (String word : words) {
 			if (freqMap.containsKey(word)) {
-				Integer i = wordMap.get(word);
+				Integer i = freqMap.get(word);
+				System.out.println(word + ": " + i);
 				i++;
+				freqMap.put(word, i);
 			} else {
 				freqMap.put(word, 1);
 			}
-		}
+		}*/ // the hatar den här koden
+		freqMap.putAll(wordMap);
 		// TODO Print to the file
-		System.out.println(freqMap);
 	}
 	
 
