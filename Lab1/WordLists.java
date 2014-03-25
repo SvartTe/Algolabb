@@ -94,7 +94,8 @@ public class WordLists {
 				wordMap.put(word, 1);
 			}
 		}
-		// TODO Print to the file
+		try {writeToFile("WordFrequencies.txt", wordMap);}
+		catch (IOException e) {e.printStackTrace();}
 	}
 	
 
@@ -117,7 +118,8 @@ public class WordLists {
 		// define!
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
-		// TODO Print to the file
+		try {writeToFile("Backwards.txt", reverseSet);}
+		catch (IOException e) {e.printStackTrace();}
 	}
 	
 	private void writeToFile(String fileName, Object list) throws IOException {
@@ -131,11 +133,25 @@ public class WordLists {
 			writer.close();
 		}
 		else if(list instanceof TreeMap){
-			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
-			for(String g : seth){
-				buffWrite.write(g + "\t");
-				buffWrite.write(((TreeMap<String, Integer>) list).get(g));
-				buffWrite.newLine();
+			NavigableSet<String> seth = ((TreeMap) list).navigableKeySet();
+			if(list.equals(wordMap)){	
+				for(String g : seth){
+					buffWrite.write(g + "\t");
+					buffWrite.write((String) ((TreeMap) list).get(g));
+					buffWrite.newLine();
+				}
+			}
+			else if(list.equals(freqMap)){
+				int freqNum = (int) ((TreeMap) list).get(((TreeMap) list).firstKey());
+				for(String g : seth){
+					if((int)((TreeMap) list).get(g) != freqNum){
+						freqNum = (int)((TreeMap) list).get(g);
+						buffWrite.write(freqNum + ":");
+						buffWrite.newLine();
+					}
+					buffWrite.write("\t" + g);
+					buffWrite.newLine();
+				}
 			}
 			writer.close();
 		}
