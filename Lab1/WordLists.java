@@ -3,7 +3,9 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -109,7 +111,8 @@ public class WordLists {
 				freqMap.put(word, 1);
 			}
 		}
-		// TODO Print to the file
+/*		try {writeToFile("Frequencies.txt", freqMap);}
+		catch (IOException e) {e.printStackTrace();}*/
 		System.out.println(freqMap);
 	}
 	
@@ -123,22 +126,20 @@ public class WordLists {
 	}
 	
 	private void writeToFile(String fileName, Object list) throws IOException {
-		FileWriter writer = new FileWriter(fileName);
-		BufferedWriter buffWrite = new BufferedWriter(writer);
+		PrintWriter writer = new PrintWriter(fileName);
 		if(list instanceof TreeSet){
 			for(String g : (TreeSet<String>) list){
-				buffWrite.write(g);
-				buffWrite.newLine();
+				writer.println(g);
 			}
+			writer.flush();
 			writer.close();
 		}
 		else if(list instanceof TreeMap){
 			NavigableSet<String> seth = ((TreeMap) list).navigableKeySet();
 			if(list.equals(wordMap)){	
 				for(String g : seth){
-					buffWrite.write(g + "\t");
-					buffWrite.write((int) ((TreeMap) list).get(g));
-					buffWrite.newLine();
+					writer.println(g + "\t");
+					writer.println((int) ((TreeMap) list).get(g));
 				}
 			}
 			else if(list.equals(freqMap)){
@@ -146,20 +147,18 @@ public class WordLists {
 				for(String g : seth){
 					if((int)((TreeMap) list).get(g) != freqNum){
 						freqNum = (int)((TreeMap) list).get(g);
-						buffWrite.write(freqNum + ":");
-						buffWrite.newLine();
+						writer.print(freqNum + ":");
 					}
-					buffWrite.write("\t" + g);
-					buffWrite.newLine();
+					writer.println("\t" + g);
 				}
 			}
+			writer.flush();
 			writer.close();
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
-		// DEBUG, set back to args[0] later
-		WordLists wl = new WordLists("ReadMe.txt");  // arg[0] contains the input file name
+		WordLists wl = new WordLists("provtext.txt");  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
