@@ -92,7 +92,8 @@ public class WordLists {
 				wordMap.put(word, 1);
 			}
 		}
-		// TODO Print to the file
+		try {writeToFile("WordFrequencies.txt", wordMap);}
+		catch (IOException e) {e.printStackTrace();}
 	}
 	
 
@@ -106,7 +107,8 @@ public class WordLists {
 		// define!
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
-		// TODO Print to the file
+		try {writeToFile("Backwards.txt", reverseSet);}
+		catch (IOException e) {e.printStackTrace();}
 	}
 	
 	private void writeToFile(String fileName, Object list) throws IOException {
