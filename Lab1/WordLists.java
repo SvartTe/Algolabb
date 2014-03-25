@@ -115,10 +115,15 @@ public class WordLists {
 		}
 		else if(list instanceof TreeMap){
 			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
-			for(String g : seth){
-				buffWrite.write(g + "\t");
-				buffWrite.write(((TreeMap<String, Integer>) list).get(g));
-				buffWrite.newLine();
+			if (list.equals(wordMap)){
+				for(String g : seth){
+					buffWrite.write(g + "\t");
+					buffWrite.write(((TreeMap<String, Integer>) list).get(g));
+					buffWrite.newLine();
+				}
+			}
+			if (list.equals(freqMap)){
+				
 			}
 			writer.close();
 		}
