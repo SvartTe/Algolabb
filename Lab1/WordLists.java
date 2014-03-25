@@ -132,6 +132,7 @@ public class WordLists {
 				int freqNum = (int) ((TreeMap) list).get(((TreeMap) list).firstKey());
 				for(String g : seth){
 					if((int)((TreeMap) list).get(g) != freqNum){
+						freqNum = (int)((TreeMap) list).get(g);
 						buffWrite.write(freqNum + ":");
 						buffWrite.newLine();
 					}
