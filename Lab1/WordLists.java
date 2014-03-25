@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.Collection;
 import java.util.NavigableSet;
 import java.util.TreeMap;
@@ -20,6 +22,7 @@ public class WordLists {
 	private ArrayList<String> words;
 	private TreeMap<String, Integer> wordMap;
 	private TreeSet<String> reverseSet;
+	private TreeMap<String, Integer> freqMap;
 
 	public WordLists(String inputFileName) throws IOException {
 		// ... define!
@@ -27,14 +30,16 @@ public class WordLists {
 		// getWord to read each word out of the file.
 		FileReader file = new FileReader(inputFileName);
 		in = new BufferedReader(file);
-		wordMap = new TreeMap<String, Integer>();
+		wordMap = new TreeMap<>();
+		freqMap = new TreeMap<>(new FrequencyComparator(freqMap));
 		
 		// Kickstart reading words
 		String word = new String(getWord());
 		
 		do {
 			if (word != null)
-				words.add(getWord());
+				words.add(word);
+			word = new String(getWord());
 		}while(word != null);
 	}
 	
@@ -92,12 +97,13 @@ public class WordLists {
 	
 
 	private void computeFrequencyMap() {
-          // define!
+		// define!
+		
 	}
 	
 
 	private void computeBackwardsOrder() {
-	    // define!
+		// define!
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
 		// TODO Print to the file
@@ -114,16 +120,24 @@ public class WordLists {
 			writer.close();
 		}
 		else if(list instanceof TreeMap){
-			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
-			if (list.equals(wordMap)){
+			NavigableSet<String> seth = ((TreeMap) list).navigableKeySet();
+			if(list.equals(wordMap)){	
 				for(String g : seth){
 					buffWrite.write(g + "\t");
-					buffWrite.write(((TreeMap<String, Integer>) list).get(g));
+					buffWrite.write((String) ((TreeMap) list).get(g));
 					buffWrite.newLine();
 				}
 			}
-			if (list.equals(freqMap)){
-				
+			else if(list.equals(freqMap)){
+				int freqNum = (int) ((TreeMap) list).get(((TreeMap) list).firstKey());
+				for(String g : seth){
+					if((int)((TreeMap) list).get(g) != freqNum){
+						buffWrite.write(freqNum + ":");
+						buffWrite.newLine();
+					}
+					buffWrite.write("\t" + g);
+					buffWrite.newLine();
+				}
 			}
 			writer.close();
 		}
@@ -136,5 +150,23 @@ public class WordLists {
 		wl.computeBackwardsOrder();
 		
 		System.out.println("Finished!");
+	}
+	
+	class FrequencyComparator implements Comparator<String> {
+
+		Map<String, Integer> map;
+		
+		public FrequencyComparator(Map<String, Integer> incoming) {
+			map = incoming;
+		}
+		
+		public int compare(String arg0, String arg1) {
+			// TODO Auto-generated method stub
+			if (map.get(arg0) >= map.get(arg1))
+				return -1;
+			else
+				return 1;
+		}
+		
 	}
 }
