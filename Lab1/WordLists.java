@@ -97,7 +97,7 @@ public class WordLists {
 				wordMap.put(word, 1);
 			}
 		}
-		try {writeToFile("WordFrequencies.txt", wordMap);}
+		try {writeToFile("alfaSorted.txt", wordMap);}
 		catch (IOException e) {e.printStackTrace();}
 	}
 	
@@ -116,15 +116,15 @@ public class WordLists {
 		}*/ // the hatar den här koden
 		freqMap.putAll(wordMap);
 		// TODO Print to the file
-		try {writeToFile("Frequencies.txt", freqMap);}	//Ger NPE än så länge
-		catch (IOException e) {e.printStackTrace();}
+		/*try {writeToFile("frequencySorted.txt", freqMap);}	//Ger NPE än så länge
+		catch (IOException e) {e.printStackTrace();}*/
 	}
 	
 
 	private void computeBackwardsOrder() {
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
-		try {writeToFile("Backwards.txt", reverseSet);}
+		try {writeToFile("backwardsSorted.txt", reverseSet);}
 		catch (IOException e) {e.printStackTrace();}
 	}
 	
@@ -150,7 +150,7 @@ public class WordLists {
 				for(String g : seth){
 					if((int)((TreeMap) list).get(g) != freqNum){
 						freqNum = (int)((TreeMap) list).get(g);
-						writer.print(freqNum + ":");
+						writer.println(freqNum + ":");
 					}
 					writer.println("\t" + g);
 				}
