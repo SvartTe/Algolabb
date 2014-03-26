@@ -116,16 +116,23 @@ public class WordLists {
 		}*/ // the hatar den här koden
 		freqMap.putAll(wordMap);
 		// TODO Print to the file
-		/*try {writeToFile("frequencySorted.txt", freqMap);}	//Ger NPE än så länge
-		catch (IOException e) {e.printStackTrace();}*/
+		try {
+			writeToFile("frequencySorted.txt", freqMap);
+		}	//Ger NPE än så länge
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 
 	private void computeBackwardsOrder() {
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
-		try {writeToFile("backwardsSorted.txt", reverseSet);}
-		catch (IOException e) {e.printStackTrace();}
+		try {
+			writeToFile("backwardsSorted.txt", reverseSet);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
