@@ -142,8 +142,7 @@ public class WordLists {
 			NavigableSet<String> seth = ((TreeMap) list).navigableKeySet();
 			if(list.equals(wordMap)){	
 				for(String g : seth){
-					writer.println(g + "\t");
-					writer.println((int) ((TreeMap) list).get(g));
+					writer.println(g + "\t" + (int) ((TreeMap) list).get(g));
 				}
 			}
 			else if(list.equals(freqMap)){
