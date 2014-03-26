@@ -145,8 +145,8 @@ public class WordLists {
 		}
 		else if(list instanceof TreeMap){
 			NavigableSet<String> seth = ((TreeMap) list).navigableKeySet();
-			if(list.equals(freqMap)){	//This ungeneralized test required because of the specified syntax
-				int freqNum = (int) ((TreeMap) list).get(((TreeMap) list).firstKey());
+			if(list.equals(freqMap)){	// This ungeneralized test required because of the specified syntax
+				int freqNum = -1; // This makes sure that the first value is retrieved without errors.
 				for(String g : seth){
 					if((int)((TreeMap) list).get(g) != freqNum){
 						freqNum = (int)((TreeMap) list).get(g);
