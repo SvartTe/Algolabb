@@ -116,19 +116,24 @@ public class WordLists {
 		}*/ // the hatar den här koden
 		freqMap.putAll(wordMap);
 		// TODO Print to the file
-/*		try {writeToFile("Frequencies.txt", freqMap);}	//Ger NPE än så länge
-		catch (IOException e) {e.printStackTrace();}*/
+		try {writeToFile("Frequencies.txt", freqMap);}	//Ger NPE än så länge
+		catch (IOException e) {e.printStackTrace();}
 	}
 	
 
 	private void computeBackwardsOrder() {
-		// define!
 		for (String word : words)
 			reverseSet.add(new StringBuilder(word).reverse().toString());
 		try {writeToFile("Backwards.txt", reverseSet);}
 		catch (IOException e) {e.printStackTrace();}
 	}
 	
+	/**
+	 * Writes list to a file with different syntax
+	 * @param fileName The name of the file the list should be written to
+	 * @param list The list that is to be written
+	 * @throws IOException
+	 */
 	private void writeToFile(String fileName, Object list) throws IOException {
 		PrintWriter writer = new PrintWriter(fileName);
 		if(list instanceof TreeSet){
@@ -140,12 +145,7 @@ public class WordLists {
 		}
 		else if(list instanceof TreeMap){
 			NavigableSet<String> seth = ((TreeMap) list).navigableKeySet();
-			if(list.equals(wordMap)){	
-				for(String g : seth){
-					writer.println(g + "\t" + (int) ((TreeMap) list).get(g));
-				}
-			}
-			else if(list.equals(freqMap)){
+			if(list.equals(freqMap)){	//This ungeneralized test required because of the specified syntax
 				int freqNum = (int) ((TreeMap) list).get(((TreeMap) list).firstKey());
 				for(String g : seth){
 					if((int)((TreeMap) list).get(g) != freqNum){
@@ -153,6 +153,11 @@ public class WordLists {
 						writer.print(freqNum + ":");
 					}
 					writer.println("\t" + g);
+				}
+			}
+			else if(list.equals(wordMap)){	
+				for(String g : seth){
+					writer.println(g + "\t" + (int) ((TreeMap) list).get(g));
 				}
 			}
 			writer.flush();
