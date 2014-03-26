@@ -116,7 +116,7 @@ public class WordLists {
 		}*/ // the hatar den här koden
 		freqMap.putAll(wordMap);
 		// TODO Print to the file
-/*		try {writeToFile("Frequencies.txt", freqMap);}
+/*		try {writeToFile("Frequencies.txt", freqMap);}	//Ger NPE än så länge
 		catch (IOException e) {e.printStackTrace();}*/
 	}
 	
@@ -133,7 +133,7 @@ public class WordLists {
 		PrintWriter writer = new PrintWriter(fileName);
 		if(list instanceof TreeSet){
 			for(String g : (TreeSet<String>) list){
-				writer.println(g);
+				writer.println(new StringBuilder(g).reverse().toString());
 			}
 			writer.flush();
 			writer.close();
