@@ -116,8 +116,8 @@ public class WordLists {
 		}*/ // the hatar den här koden
 		freqMap.putAll(wordMap);
 		// TODO Print to the file
-		/*try {writeToFile("frequencySorted.txt", freqMap);}	//Ger NPE än så länge
-		catch (IOException e) {e.printStackTrace();}*/
+		try {writeToFile("frequencySorted.txt", freqMap);}	//Ger NPE än så länge
+		catch (IOException e) {e.printStackTrace();}
 	}
 	
 
@@ -143,13 +143,13 @@ public class WordLists {
 			writer.flush();
 			writer.close();
 		}
-		else if(list instanceof TreeMap){
-			NavigableSet<String> seth = ((TreeMap) list).navigableKeySet();
+		else if(list instanceof TreeMap){ // TreeMaps are notiterable, so they need their own for-each
+			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
 			if(list.equals(freqMap)){	// This ungeneralized test required because of the specified syntax
 				int freqNum = -1; // This makes sure that the first value is retrieved without errors.
 				for(String g : seth){
-					if((int)((TreeMap) list).get(g) != freqNum){
-						freqNum = (int)((TreeMap) list).get(g);
+					if(((TreeMap<String, Integer>) list).get(g) != freqNum){
+						freqNum = ((TreeMap<String, Integer>) list).get(g);
 						writer.println(freqNum + ":");
 					}
 					writer.println("\t" + g);
@@ -157,7 +157,7 @@ public class WordLists {
 			}
 			else if(list.equals(wordMap)){	
 				for(String g : seth){
-					writer.println(g + "\t" + (int) ((TreeMap) list).get(g));
+					writer.println(g + "\t" + ((TreeMap<String, Integer>) list).get(g));
 				}
 			}
 			writer.flush();
