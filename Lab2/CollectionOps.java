@@ -59,7 +59,9 @@ public class CollectionOps {
     		return null;
     	}
     }
-    
+
     // Put your code for filter here ...
+    // Whatamidoing.iff
+    //public class IsEvenFunctor
 
 }
