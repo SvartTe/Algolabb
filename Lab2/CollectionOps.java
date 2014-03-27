@@ -3,11 +3,25 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Iterator;
 
 public class CollectionOps {
 
-    // Put your code for print here ... 
-	
+    // Put your code for print here ...
+	public static <T> void print(Collection<T> l) {
+		Iterator iter = l.iterator();
+		System.out.print("[");
+		boolean comma = false;
+		while (iter.hasNext()) {
+			if (comma)
+				System.out.print(",");
+			Object c =  iter.next();
+			System.out.print(c.toString());
+			comma = true;
+		}
+		System.out.println("]");
+	}
+    
     // Put your code for reverse here ...
 	public static <T> List<T> reverse(List<T> l){
 		for (int i = 0; i < l.size(); i++){
