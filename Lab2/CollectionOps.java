@@ -1,8 +1,11 @@
+/* 
+ * Namn: Seabstian Lindgren & Robert Larsson
+ * Grupp: 34
+ * Datum: 2014-03-27
+ */
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Iterator;
 
 public class CollectionOps {
