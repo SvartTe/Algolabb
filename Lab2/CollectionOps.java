@@ -1,8 +1,11 @@
+/* 
+ * Namn: Seabstian Lindgren & Robert Larsson
+ * Grupp: 34
+ * Datum: 2014-03-27
+ */
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Iterator;
 
 public class CollectionOps {
@@ -34,9 +37,11 @@ public class CollectionOps {
 	// Put your code for less here ...
 	public static <T> boolean less(	Collection<T> c1, Collection<T> c2,
 									Comparator<T> comp){
-		
-		
-		return false;
+		for (T t1 : c1)
+			for (T t2 : c2)
+				if (comp.compare(t1, t2) != -1)
+					return false;	// Technically only two rows
+		return true;
 	}
 	
 	
