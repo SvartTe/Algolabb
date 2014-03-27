@@ -19,7 +19,15 @@ public class CollectionOps {
 	}
     
     // Put your code for reverse here ...
-
+	public static <T> List<T> reverse(List<T> l){
+		for (int i = 0; i < l.size(); i++){
+			l.add(0, l.get(l.size()-1));	// Index starts from 0, size from 1, so this takes the last element
+			l.remove(l.size()-1);		// The last element is removed, l.size() is back to its starting value
+		}
+		return l;
+	}
+	
+	
     // Put your code for less here ...
     
     // Example
