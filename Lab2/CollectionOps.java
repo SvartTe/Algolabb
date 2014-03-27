@@ -1,4 +1,8 @@
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Iterator;
 
 public class CollectionOps {
@@ -26,10 +30,16 @@ public class CollectionOps {
 		}
 		return l;
 	}
+
+	// Put your code for less here ...
+	public static <T> boolean less(	Collection<T> c1, Collection<T> c2,
+									Comparator<T> comp){
+		
+		
+		return false;
+	}
 	
 	
-    // Put your code for less here ...
-    
     // Example
     public static <T1,T2> Collection<T2>
     map(UnaryOp<T1,T2> functor,Collection<T1> c) 
