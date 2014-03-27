@@ -2,3 +2,7 @@
 *.class
 *.project
 *.classpath
+/Lab1/frequencySorted.txt
+/Lab1/Backwards.txt
+/Lab1/alfaSorted.txt
+/Lab1/WordFrequencies.txt
