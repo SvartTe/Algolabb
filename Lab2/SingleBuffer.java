@@ -17,7 +17,9 @@ public class SingleBuffer<T> {
 	}
 	
 	public T get(){
-		return t;
+		T i = t;
+		t = null;
+		return i;
 	}
 	
 }
