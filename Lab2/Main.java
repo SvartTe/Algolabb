@@ -14,7 +14,7 @@ public class Main {
          names.add("a");
          CollectionOps.print(names); System.out.println();
 
-         // Test print for a list containing more than one elment
+         // Test print for a list containing more than one element
          names.add("b");
          names.add("c");
          CollectionOps.print(names); System.out.println();
