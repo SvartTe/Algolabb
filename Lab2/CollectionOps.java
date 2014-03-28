@@ -10,9 +10,12 @@ import java.util.Iterator;
 
 public class CollectionOps {
 
-    // Put your code for print here ...
+	/**
+	 * 
+	 * @param l
+	 */
 	public static <T> void print(Collection<T> l) {
-		Iterator iter = l.iterator();
+		Iterator<T> iter = l.iterator();
 		System.out.print("[");
 		boolean comma = false;
 		while (iter.hasNext()) {
@@ -25,21 +28,34 @@ public class CollectionOps {
 		System.out.println("]");
 	}
     
-    // Put your code for reverse here ...
+	/**
+	 * Reverses the order of all elements in the given list
+	 * @param l The list that should have the order of its elements
+	 * 			reversed
+	 * @return A reference to the now reversed list l
+	 */
 	public static <T> List<T> reverse(List<T> l){
 		for (int i = 0; i < l.size(); i++){
-			l.add(0, l.get(l.size()-1));	// Index starts from 0, size from 1, so this takes the last element
+			l.add(i, l.get(l.size()-1));	// Index starts from 0, size from 1, so this takes the last element
 			l.remove(l.size()-1);		// The last element is removed, l.size() is back to its starting value
 		}
 		return l;
 	}
 
-	// Put your code for less here ...
+	/**
+	 * Determines whether all elements in a collection is less than
+	 * all elements in another collection. Both collections should contain
+	 * the same type of objects.
+	 * @param c1 The collection that should contain smaller elements
+	 * @param c2 The collection that should contain greater elements
+	 * @param comp The comparator for the objects in question that should be used
+	 * @return True if all elements in c1 is less than all elements in c2
+	 */
 	public static <T> boolean less(	Collection<T> c1, Collection<T> c2,
 									Comparator<T> comp){
 		for (T t1 : c1)
 			for (T t2 : c2)
-				if (comp.compare(t1, t2) != -1)
+				if (comp.compare(t1, t2) != -1)	//This aborts the loop the instant one element isn't less than the other, saving precious time.
 					return false;	// Technically only two rows
 		return true;
 	}
