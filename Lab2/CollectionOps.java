@@ -30,6 +30,8 @@ public class CollectionOps {
     
 	/**
 	 * Reverses the order of all elements in the given list
+	 * Could've used Collections.reverse(list), but that felt like
+	 * cheating.
 	 * @param l The list that should have the order of its elements
 	 * 			reversed
 	 * @return A reference to the now reversed list l
