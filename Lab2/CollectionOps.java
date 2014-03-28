@@ -85,6 +85,15 @@ public class CollectionOps {
 
     // Put your code for filter here ...
     // Whatamidoing.iff
-    //public class IsEvenFunctor
+    //drugs.drugs(Drugs drugs, Drugs cocainum);
+    public class Filter implements UnaryPred<Object> {
+
+		@Override
+		public boolean pred(Object x) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+    	
+    }
 
 }
