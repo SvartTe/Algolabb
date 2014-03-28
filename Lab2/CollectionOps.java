@@ -65,7 +65,7 @@ public class CollectionOps {
 	
     // Example
     public static <T1,T2> Collection<T2>
-    map(UnaryOp<T1,T2> functor,Collection<T1> c) 
+    							map(UnaryOp<T1,T2> functor,Collection<T1> c) 
     {
     	// Determine the dynamic type of the collection
     	Class<? extends Collection> cls = c.getClass();
@@ -84,16 +84,25 @@ public class CollectionOps {
     }
 
     // Put your code for filter here ...
-    // Whatamidoing.iff
-    //drugs.drugs(Drugs drugs, Drugs cocainum);
-    public class Filter implements UnaryPred<Object> {
-
-		@Override
-		public boolean pred(Object x) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-    	
+    /**
+     * 
+     * @param op
+     * @param map
+     * @return
+     */
+    public static <T> Collection<T> filter(UnaryPred<T> op, Collection<T> map) {
+    	try {
+    		Collection<T> list = map.getClass().newInstance();
+    		for(T t : map) {
+    			if(op.pred(t))
+    				list.add(t);
+    		}
+    		return map;
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		return null;
+    	}
     }
-
+    
+    
 }

@@ -1,10 +1,4 @@
 
-public class IsEvenFunctor<T> implements UnaryPred<T> {
-
-	@Override
-	public boolean pred(T x) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+public class IsEvenFunctor implements UnaryPred<Integer> {
+	public boolean pred(Integer x) { return x % 2 == 0; }
 }
