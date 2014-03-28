@@ -35,6 +35,11 @@ public class Main {
          mixed.add(45);
          mixed.add(-155);
          
+         ArrayList<Double> dList= new ArrayList<Double>();
+         dList.add(3.0d);
+         dList.add(-3.0d);
+         dList.add(0.0d);
+         
          // Test print for an empty list
          CollectionOps.print(names); System.out.println();
 
@@ -67,8 +72,16 @@ public class Main {
          System.out.println("Mixed - Small: " + CollectionOps.less(mixed, small, comp));
 
          // Write code to test map here
+         SignFunctor func = new SignFunctor();
+         System.out.println("Test of map");
+         // 1, -1, 0
+         CollectionOps.print(CollectionOps.map(func, dList));
              
          // Write code to test filter here
+         IsEvenFunctor funk = new IsEvenFunctor();
+         System.out.println("Test of filter");
+         //[-2,4]
+         CollectionOps.print(CollectionOps.filter(funk, small));
     }
     
 }

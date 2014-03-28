@@ -97,7 +97,7 @@ public class CollectionOps {
     			if(op.pred(t))
     				list.add(t);
     		}
-    		return map;
+    		return list;
     	} catch (Exception e) {
     		e.printStackTrace();
     		return null;
