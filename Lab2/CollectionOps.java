@@ -22,7 +22,7 @@ public class CollectionOps {
 		while (iter.hasNext()) {
 			if (comma)
 				System.out.print(",");
-			Object c =  iter.next();
+			T c =  iter.next();
 			System.out.print(c.toString());
 			comma = true;
 		}
