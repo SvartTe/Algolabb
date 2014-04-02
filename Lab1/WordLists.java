@@ -136,40 +136,49 @@ public class WordLists {
 	}
 	
 	/**
+	 * Writing method for the reverseSet
+	 * @param filename The name of the file the list should be written to
+	 * @param list The list that is to be written
+	 * @throws IOException
+	 */
+	private void writeToFile(String filename, TreeSet<String> list) throws IOException {
+		PrintWriter writer = new PrintWriter(filename);
+		for(String g : (TreeSet<String>) list){
+			writer.println(new StringBuilder(g).reverse().toString());
+		}
+		writer.flush();
+		writer.close();
+	}
+	
+	/**
 	 * Writes list to a file with different syntax
 	 * @param fileName The name of the file the list should be written to
 	 * @param list The list that is to be written
 	 * @throws IOException
 	 */
-	private void writeToFile(String fileName, Object list) throws IOException {
+	private void writeToFile(String fileName, TreeMap list)
+			throws IOException {
 		PrintWriter writer = new PrintWriter(fileName);
-		if(list instanceof TreeSet){
-			for(String g : (TreeSet<String>) list){
-				writer.println(new StringBuilder(g).reverse().toString());
-			}
-			writer.flush();
-			writer.close();
-		}
-		else if(list instanceof TreeMap){ // TreeMaps are notiterable, so they need their own for-each
-			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
-			if(list.equals(freqMap)){	// This ungeneralized test required because of the specified syntax
-				int freqNum = -1; // This makes sure that the first value is retrieved without errors.
-				for(String g : seth){
-					if(((TreeMap<String, Integer>) list).get(g) != freqNum){
-						freqNum = ((TreeMap<String, Integer>) list).get(g);
-						writer.println(freqNum + ":");
-					}
+		if (list.firstKey() instanceof Integer) { // This ungeneralized test required because
+												// of the specified syntax
+			NavigableSet<Integer> seth = ((TreeMap<Integer, TreeSet<String>>) list).navigableKeySet();
+			int freqNum = -1; // This makes sure that the first value is
+			// retrieved without errors.
+			for (Integer i : seth) {
+				writer.println(i + ":");
+				for(String g : (TreeSet<String>) list.get(i))
 					writer.println("\t" + g);
-				}
+						
 			}
-			else if(list.equals(wordMap)){	
-				for(String g : seth){
-					writer.println(g + "\t" + ((TreeMap<String, Integer>) list).get(g));
-				}
+		} else if (list.equals(wordMap)) {
+			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
+			for (String g : seth) {
+				writer.println(g + "\t"
+						+ ((TreeMap<String, Integer>) list).get(g));
 			}
-			writer.flush();
-			writer.close();
 		}
+		writer.flush();
+		writer.close();
 	}
 
 	public static void main(String[] args) throws IOException {
