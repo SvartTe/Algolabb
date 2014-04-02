@@ -16,8 +16,8 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 // Author(s): Robert Larsson & Sebastian Lindgren
-// Version:   Neunundneunzig
-// Date:	  2014-03-23
+// Version:   Luftballon
+// Date:	  2014-04-02
 
 public class WordLists {
 	private Reader in = null;
@@ -52,6 +52,11 @@ public class WordLists {
 	    return punctChars.indexOf(c) != -1;
 	}
 	
+	/**
+	 * 
+	 * @return word read from file
+	 * @throws IOException
+	 */
 	private String getWord() throws IOException {
 		int state = 0;
 		int i;
@@ -86,8 +91,10 @@ public class WordLists {
 		return s;
 	}
 	
+	/**
+	 *	Count how often words are used and store 
+	 */
 	private void computeWordFrequencies() {
-		// define!
 		for (String word : words) {
 			if (wordMap.containsKey(word)) {
 				Integer i = wordMap.get(word);
@@ -102,19 +109,11 @@ public class WordLists {
 	}
 	
 
+	/**
+	 * Manually iterate over words and put them into sets for how often they're
+	 * used.
+	 */
 	private void computeFrequencyMap() {
-		// define!
-/*		for (String word : words) {
-			if (freqMap.containsKey(word)) {
-				Integer i = freqMap.get(word);
-				System.out.println(word + ": " + i);
-				i++;
-				freqMap.put(word, i);
-			} else {
-				freqMap.put(word, 1);
-			}
-		}*/ // the hatar den här koden
-		// Behöver iterera över wordMap, stoppa in på rätt ställen och göra nya set
 		for (String word : wordMap.keySet()) {
 			Integer hits = wordMap.get(word);
 			if (!freqMap.containsKey(hits)) {
@@ -190,7 +189,7 @@ public class WordLists {
 
 	public static void main(String[] args) throws IOException {
 		// DEBUG, set back to args[0] later
-		WordLists wl = new WordLists("/Code/Chalmers/Algolabb/Lab1/provtext.txt");  // arg[0] contains the input file name
+		WordLists wl = new WordLists("/home/robert/Code/Chalmers/Algolabb/Lab1/provtext.txt");  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
@@ -198,20 +197,4 @@ public class WordLists {
 		System.out.println("Finished!");
 	}
 	
-	class FrequencyComparator implements Comparator<String> {
-
-		Map<String, Integer> map;
-		
-		public FrequencyComparator(Map<String, Integer> incoming) {
-			map = incoming;
-		}
-		
-		public int compare(String arg0, String arg1) {
-			if (map.get(arg0) >= map.get(arg1))
-				return -1;
-			else
-				return 1;
-		}
-		
-	}
 }
