@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -193,9 +194,12 @@ public class AngloTrainer {
 	 * 
 	 */
     public static void main(String[] args) {
-    	try {
-			AngloTrainer trainer = new AngloTrainer("dictionary.txt");
-	    	trainer.game();
-		} catch (IOException e) {e.printStackTrace();}
+    	Console console;
+    	while((console = System.console()) != null ) {
+	    	try {
+				AngloTrainer trainer = new AngloTrainer("dictionary.txt");
+		    	trainer.game();
+			} catch (IOException e) {e.printStackTrace();}
+    	}
     }
 }
