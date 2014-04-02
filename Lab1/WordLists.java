@@ -138,12 +138,12 @@ public class WordLists {
 	/**
 	 * Writing method for the reverseSet
 	 * @param filename The name of the file the list should be written to
-	 * @param list The list that is to be written
+	 * @param set The list that is to be written
 	 * @throws IOException
 	 */
-	private void writeToFile(String filename, TreeSet<String> list) throws IOException {
+	private void writeToFile(String filename, TreeSet<String> set) throws IOException {
 		PrintWriter writer = new PrintWriter(filename);
-		for(String g : (TreeSet<String>) list){
+		for(String g : (TreeSet<String>) set){
 			writer.println(new StringBuilder(g).reverse().toString());
 		}
 		writer.flush();
@@ -153,28 +153,25 @@ public class WordLists {
 	/**
 	 * Writes list to a file with different syntax
 	 * @param fileName The name of the file the list should be written to
-	 * @param list The list that is to be written
+	 * @param map The list that is to be written
 	 * @throws IOException
 	 */
-	private void writeToFile(String fileName, TreeMap list)
+	private void writeToFile(String fileName, TreeMap map)
 			throws IOException {
 		PrintWriter writer = new PrintWriter(fileName);
-		if (list.firstKey() instanceof Integer) { // This ungeneralized test required because
+		if (map.firstKey() instanceof Integer) { // This ungeneralized test required because
 												// of the specified syntax
-			NavigableSet<Integer> seth = ((TreeMap<Integer, TreeSet<String>>) list).navigableKeySet();
-			int freqNum = -1; // This makes sure that the first value is
-			// retrieved without errors.
-			for (Integer i : seth) {
+			NavigableSet<Integer> navSet = ((TreeMap<Integer, TreeSet<String>>) map).navigableKeySet();
+			for (Integer i : navSet) {
 				writer.println(i + ":");
-				for(String g : (TreeSet<String>) list.get(i))
+				for(String g : (TreeSet<String>) map.get(i))
 					writer.println("\t" + g);
-						
 			}
-		} else if (list.equals(wordMap)) {
-			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
-			for (String g : seth) {
+		} else if (map.firstKey() instanceof String) {
+			NavigableSet<String> navSet = ((TreeMap<String, Integer>) map).navigableKeySet();
+			for (String g : navSet) {
 				writer.println(g + "\t"
-						+ ((TreeMap<String, Integer>) list).get(g));
+						+ ((TreeMap<String, Integer>) map).get(g));
 			}
 		}
 		writer.flush();
