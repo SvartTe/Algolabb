@@ -24,7 +24,7 @@ public class WordLists {
 	private ArrayList<String> words;
 	private TreeMap<String, Integer> wordMap;
 	private TreeSet<String> reverseSet;
-	private TreeMap<String, Integer> freqMap;
+	private TreeMap<Integer, TreeSet<String>> freqMap;
 
 	public WordLists(String inputFileName) throws IOException {
 		// ... define!
@@ -34,7 +34,7 @@ public class WordLists {
 		in = new BufferedReader(file);
 		words = new ArrayList<>();
 		wordMap = new TreeMap<>();
-		freqMap = new TreeMap<>(new FrequencyComparator(wordMap));
+		freqMap = new TreeMap<>();
 		reverseSet = new TreeSet<>();
 		
 		// Kickstart reading words
@@ -114,7 +114,17 @@ public class WordLists {
 				freqMap.put(word, 1);
 			}
 		}*/ // the hatar den här koden
-		freqMap.putAll(wordMap);
+		// Behöver iterera över wordMap, stoppa in på rätt ställen och göra nya set
+		for (String word : wordMap.keySet()) {
+			Integer hits = wordMap.get(word);
+			if (!freqMap.containsKey(hits)) {
+				TreeSet<String> wordSet = new TreeSet<>();
+				wordSet.add(word);
+				freqMap.put(hits, wordSet);
+			} else {
+				freqMap.get(hits).add(word);
+			}
+		}
 		// TODO Print to the file
 		try {
 			writeToFile("frequencySorted.txt", freqMap);
@@ -174,7 +184,7 @@ public class WordLists {
 
 	public static void main(String[] args) throws IOException {
 		// DEBUG, set back to args[0] later
-		WordLists wl = new WordLists("provtext.txt");  // arg[0] contains the input file name
+		WordLists wl = new WordLists("/Code/Chalmers/Algolabb/Lab1/provtext.txt");  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
