@@ -171,7 +171,7 @@ public class WordLists {
 		PrintWriter writer = new PrintWriter(fileName);
 		if (map.firstKey() instanceof Integer) { // This ungeneralized test required because
 												// of the specified syntax
-			NavigableSet<Integer> navSet = ((TreeMap<Integer, TreeSet<String>>) map).navigableKeySet();
+			NavigableSet<Integer> navSet = ((TreeMap<Integer, TreeSet<String>>) map).descendingKeySet();
 			for (Integer i : navSet) {
 				writer.println(i + ":");
 				for(String g : (TreeSet<String>) map.get(i))
@@ -190,7 +190,7 @@ public class WordLists {
 
 	public static void main(String[] args) throws IOException {
 		// DEBUG, set back to args[0] later
-		WordLists wl = new WordLists("/Code/Chalmers/Algolabb/Lab1/provtext.txt");  // arg[0] contains the input file name
+		WordLists wl = new WordLists("provtext.txt");  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
