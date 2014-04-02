@@ -4,6 +4,7 @@
  * Datum: 2014-03-27
  */
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Iterator;
@@ -55,11 +56,7 @@ public class CollectionOps {
 	 */
 	public static <T> boolean less(	Collection<T> c1, Collection<T> c2,
 									Comparator<T> comp){
-		for (T t1 : c1)
-			for (T t2 : c2)
-				if (comp.compare(t1, t2) != -1)	//This aborts the loop the instant one element isn't less than the other, saving precious time.
-					return false;	// Technically only two rows
-		return true;
+		return (comp.compare(Collections.max(c1, comp), Collections.max(c2, comp))== -1);
 	}
 	
 	
