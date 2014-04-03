@@ -16,15 +16,15 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 // Author(s): Robert Larsson & Sebastian Lindgren
-// Version:   Neunundneunzig
-// Date:	  2014-03-23
+// Version:   Luftballon
+// Date:	  2014-04-02
 
 public class WordLists {
 	private Reader in = null;
 	private ArrayList<String> words;
 	private TreeMap<String, Integer> wordMap;
 	private TreeSet<String> reverseSet;
-	private TreeMap<String, Integer> freqMap;
+	private TreeMap<Integer, TreeSet<String>> freqMap;
 
 	public WordLists(String inputFileName) throws IOException {
 		// ... define!
@@ -34,7 +34,7 @@ public class WordLists {
 		in = new BufferedReader(file);
 		words = new ArrayList<>();
 		wordMap = new TreeMap<>();
-		freqMap = new TreeMap<>(new FrequencyComparator(wordMap));
+		freqMap = new TreeMap<>();
 		reverseSet = new TreeSet<>();
 		
 		// Kickstart reading words
@@ -52,6 +52,11 @@ public class WordLists {
 	    return punctChars.indexOf(c) != -1;
 	}
 	
+	/**
+	 * 
+	 * @return word read from file
+	 * @throws IOException
+	 */
 	private String getWord() throws IOException {
 		int state = 0;
 		int i;
@@ -86,8 +91,10 @@ public class WordLists {
 		return s;
 	}
 	
+	/**
+	 *	Count how often words are used and store 
+	 */
 	private void computeWordFrequencies() {
-		// define!
 		for (String word : words) {
 			if (wordMap.containsKey(word)) {
 				Integer i = wordMap.get(word);
@@ -102,19 +109,21 @@ public class WordLists {
 	}
 	
 
+	/**
+	 * Manually iterate over words and put them into sets for how often they're
+	 * used.
+	 */
 	private void computeFrequencyMap() {
-		// define!
-/*		for (String word : words) {
-			if (freqMap.containsKey(word)) {
-				Integer i = freqMap.get(word);
-				System.out.println(word + ": " + i);
-				i++;
-				freqMap.put(word, i);
+		for (String word : wordMap.keySet()) {
+			Integer hits = wordMap.get(word);
+			if (!freqMap.containsKey(hits)) {
+				TreeSet<String> wordSet = new TreeSet<>();
+				wordSet.add(word);
+				freqMap.put(hits, wordSet);
 			} else {
-				freqMap.put(word, 1);
+				freqMap.get(hits).add(word);
 			}
-		}*/ // the hatar den här koden
-		freqMap.putAll(wordMap);
+		}
 		// TODO Print to the file
 		try {
 			writeToFile("frequencySorted.txt", freqMap);
@@ -136,45 +145,50 @@ public class WordLists {
 	}
 	
 	/**
-	 * Writes list to a file with different syntax
-	 * @param fileName The name of the file the list should be written to
-	 * @param list The list that is to be written
+	 * Writing method for the reverseSet
+	 * @param filename The name of the file the list should be written to
+	 * @param set The list that is to be written
 	 * @throws IOException
 	 */
-	private void writeToFile(String fileName, Object list) throws IOException {
+	private void writeToFile(String filename, TreeSet<String> set) throws IOException {
+		PrintWriter writer = new PrintWriter(filename);
+		for(String g : (TreeSet<String>) set){
+			writer.println(new StringBuilder(g).reverse().toString());
+		}
+		writer.flush();
+		writer.close();
+	}
+	
+	/**
+	 * Writes list to a file with different syntax
+	 * @param fileName The name of the file the list should be written to
+	 * @param map The list that is to be written
+	 * @throws IOException
+	 */
+	private void writeToFile(String fileName, TreeMap map)
+			throws IOException {
 		PrintWriter writer = new PrintWriter(fileName);
-		if(list instanceof TreeSet){
-			for(String g : (TreeSet<String>) list){
-				writer.println(new StringBuilder(g).reverse().toString());
-			}
-			writer.flush();
-			writer.close();
-		}
-		else if(list instanceof TreeMap){ // TreeMaps are notiterable, so they need their own for-each
-			NavigableSet<String> seth = ((TreeMap<String, Integer>) list).navigableKeySet();
-			if(list.equals(freqMap)){	// This ungeneralized test required because of the specified syntax
-				int freqNum = -1; // This makes sure that the first value is retrieved without errors.
-				for(String g : seth){
-					if(((TreeMap<String, Integer>) list).get(g) != freqNum){
-						freqNum = ((TreeMap<String, Integer>) list).get(g);
-						writer.println(freqNum + ":");
-					}
+		if (map.firstKey() instanceof Integer) { // This ungeneralized test required because
+												// of the specified syntax
+			NavigableSet<Integer> navSet = ((TreeMap<Integer, TreeSet<String>>) map).descendingKeySet();
+			for (Integer i : navSet) {
+				writer.println(i + ":");
+				for(String g : (TreeSet<String>) map.get(i))
 					writer.println("\t" + g);
-				}
 			}
-			else if(list.equals(wordMap)){	
-				for(String g : seth){
-					writer.println(g + "\t" + ((TreeMap<String, Integer>) list).get(g));
-				}
+		} else if (map.firstKey() instanceof String) {
+			NavigableSet<String> navSet = ((TreeMap<String, Integer>) map).navigableKeySet();
+			for (String g : navSet) {
+				writer.println(g + "\t"
+						+ ((TreeMap<String, Integer>) map).get(g));
 			}
-			writer.flush();
-			writer.close();
 		}
+		writer.flush();
+		writer.close();
 	}
 
 	public static void main(String[] args) throws IOException {
-		// DEBUG, set back to args[0] later
-		WordLists wl = new WordLists("provtext.txt");  // arg[0] contains the input file name
+		WordLists wl = new WordLists("args[0]");  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
@@ -182,20 +196,4 @@ public class WordLists {
 		System.out.println("Finished!");
 	}
 	
-	class FrequencyComparator implements Comparator<String> {
-
-		Map<String, Integer> map;
-		
-		public FrequencyComparator(Map<String, Integer> incoming) {
-			map = incoming;
-		}
-		
-		public int compare(String arg0, String arg1) {
-			if (map.get(arg0) >= map.get(arg1))
-				return -1;
-			else
-				return 1;
-		}
-		
-	}
 }
