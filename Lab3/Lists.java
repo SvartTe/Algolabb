@@ -106,6 +106,13 @@ public class Lists {
     
     // Testmetod: JunitListTest.testContains()
     public static boolean contains(ListNode head,char c) {
+    	ListNode currentNode = head;
+    	while(currentNode != null) {
+    		if (currentNode.element == c)
+    			return true;
+    		else
+    			currentNode = currentNode.next;
+    	}
         return false;
     }
     
