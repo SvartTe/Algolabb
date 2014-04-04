@@ -147,8 +147,10 @@ public class Lists {
     
     // Testmetod: JunitListTest.testAddFirst()
     public static ListNode addFirst(ListNode l,char c) {  
-        
-    	return l;
+        ListNode newFirst = new ListNode();
+        newFirst.element = c;
+        newFirst.next = l;
+    	return newFirst;
     }
          
     // This is a private utility method.
