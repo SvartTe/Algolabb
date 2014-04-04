@@ -155,7 +155,10 @@ public class Lists {
          
     // This is a private utility method.
     private static ListNode getLastNode(ListNode head) {
-        return null;
+        ListNode lastNode = head;
+        while(lastNode.next != null)
+        	lastNode = lastNode.next;
+    	return lastNode;
     }
    
     // Testmetod: JunitListTest.testAddLast()
