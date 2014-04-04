@@ -175,7 +175,9 @@ public class Lists {
     
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {  
-        return null;
+        getLastNode(l1).next = l2;
+        l2 = mkEmpty();    	
+    	return l1;
     }
     
     // Testmetod: JunitListTest.testAddAll()
