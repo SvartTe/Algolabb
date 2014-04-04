@@ -121,7 +121,22 @@ public class Lists {
     
     // Testmetod: JunitListTest.testCopyUpperCase()
     public static ListNode copyUpperCase(ListNode head) {
-        return null;
+    	ListNode returnNode = new ListNode();
+    	ListNode currentReturnNode = returnNode;
+    	ListNode currentNode = head;
+    	while(currentNode != null) {
+    		if(Character.isUpperCase(currentNode.element)) {
+    			currentReturnNode.element = currentNode.element;
+    			if (currentNode.next == null)
+    				currentReturnNode.next = null;
+    			else {
+    				currentReturnNode.next = new ListNode();
+    				currentReturnNode = currentReturnNode.next;
+    			}
+    		}
+    		currentNode = currentNode.next;
+    	}
+        return returnNode;
     }
     
     // Testmetod: JunitListTest.testAddFirst()
