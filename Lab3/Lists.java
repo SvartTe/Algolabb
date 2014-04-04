@@ -182,7 +182,9 @@ public class Lists {
     
     // Testmetod: JunitListTest.testAddAll()
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-        return null;
+    	ListNode l2Copy = copy(l2);
+    	concat(l1, l2Copy);
+        return l1;
     }
       
     // Testmetod: JunitListTest.testReverse()
