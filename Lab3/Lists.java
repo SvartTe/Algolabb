@@ -91,16 +91,22 @@ public class Lists {
         return l;
      }
     
-    // ---------------- Uppgifter ----------------- 
+    
+    /////////////////////////////////////////////////
+    // ------------------------------------------- //
+    // ---------------- Uppgifter ---------------- //
+    // ------------------------------------------- //
+    /////////////////////////////////////////////////
+    
     
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
-    	String returnString;
+    	String returnString = "";
     	ListNode currentNode = l;
     	while(currentNode != null){
-    		if(currentNode.element instanceof Object)
-    			returnString.concat(currentNode.element.toString());
-    		else
+//    		if(currentNode.element instanceof Object)	// For a scalable method; not compatible with char
+//    			returnString.concat(currentNode.element.toString());
+//    		else
     			returnString = returnString + currentNode.element;
     		currentNode = currentNode.next;
     	}
@@ -141,7 +147,8 @@ public class Lists {
     
     // Testmetod: JunitListTest.testAddFirst()
     public static ListNode addFirst(ListNode l,char c) {  
-        return null;
+        
+    	return l;
     }
          
     // This is a private utility method.
