@@ -98,7 +98,10 @@ public class Lists {
     	String returnString;
     	ListNode currentNode = l;
     	while(currentNode != null){
-    		returnString.concat(currentNode.element.toString());
+    		if(currentNode.element instanceof Object)
+    			returnString.concat(currentNode.element.toString());
+    		else
+    			returnString = returnString + currentNode.element;
     		currentNode = currentNode.next;
     	}
          return returnString;
