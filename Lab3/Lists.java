@@ -1,8 +1,8 @@
 /**
  * A collection of utility functions for C style primitive list handling.
  *
- * @author(s)
- * @version 2013-xx-yy
+ * @author(s)	Robert Larsson & Sebastian Lindgren
+ * @version 2014-04-06
  */
 public class Lists {
    
@@ -38,24 +38,24 @@ public class Lists {
         }
     }
     
-    // Se förel. OH
+    // Se fï¿½rel. OH
     public static ListNode toList(String chars) {
-        ListNode head, ptr1;     // head pekar alltid på listans huvud
-        head = new ListNode();   // Listans huvud (innehåller ej data)
+        ListNode head, ptr1;     // head pekar alltid pï¿½ listans huvud
+        head = new ListNode();   // Listans huvud (innehï¿½ller ej data)
         head.next = null;
-        ptr1 = head;             // ptr pekar på sista noden
+        ptr1 = head;             // ptr pekar pï¿½ sista noden
 
         // Bygg en lista av tecken
         for ( int i = 0; i < chars.length(); i++ ) {
             ptr1.next = new ListNode();          // Addera en ny nod sist
             ptr1 = ptr1.next;                    // Flytta fram till den nya noden
-            ptr1.element = chars.charAt(i);      // Sätt in tecknet
+            ptr1.element = chars.charAt(i);      // Sï¿½tt in tecknet
             ptr1.next = null;                    // Avsluta listan
         } 
         return head;
     }
     
-    // Se förel. OH
+    // Se fï¿½rel. OH
     public static ListNode copy(ListNode l) {
         if ( l == null )
             throw new ListsException("Lists: null passed to copy");
@@ -64,7 +64,7 @@ public class Lists {
         head.next = null;
         ptr1 = head;
 
-        ptr2 = l.next;  // första listelementet i originallistan
+        ptr2 = l.next;  // fï¿½rsta listelementet i originallistan
         while ( ptr2 != null ) {
             ptr1.next = new ListNode();    // Ny nod i kopian
             ptr1 = ptr1.next;              // Flytta fram
@@ -75,19 +75,19 @@ public class Lists {
         return head;
     }
     
-    // Se förel. OH
+    // Se fï¿½rel. OH
     public static ListNode removeAll(ListNode l,char c) {
         if ( l == null )
             throw new ListsException("Lists: null passed to removeAll");
         ListNode p = l;
         while ( p.next != null ) {
-            ListNode temp = p.next;      // Handtag på nästa nod
+            ListNode temp = p.next;      // Handtag pï¿½ nï¿½sta nod
             if ( temp.element == c )     // Skall den tas bort?
-                p.next = temp.next;      // Länka förbi
+                p.next = temp.next;      // Lï¿½nka fï¿½rbi
             else
-                p = p.next;              // Nej, gå vidare *
+                p = p.next;              // Nej, gï¿½ vidare *
         }
-        // * p får ej flyttas om den efterföljande noden togs bort!
+        // * p fï¿½r ej flyttas om den efterfï¿½ljande noden togs bort!
         return l;
      }
     
