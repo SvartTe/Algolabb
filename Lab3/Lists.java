@@ -95,7 +95,13 @@ public class Lists {
     
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
-         return null;
+    	String returnString;
+    	ListNode currentNode = l;
+    	while(currentNode != null){
+    		returnString.concat(currentNode.element.toString());
+    		currentNode = currentNode.next;
+    	}
+         return returnString;
     }
     
     // Testmetod: JunitListTest.testContains()
