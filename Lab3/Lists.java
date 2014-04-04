@@ -163,7 +163,14 @@ public class Lists {
    
     // Testmetod: JunitListTest.testAddLast()
     public static ListNode addLast(ListNode l,char c) {  
-        return null;
+    	ListNode newLastNode = new ListNode();
+    	ListNode oldLastNode = getLastNode(l);
+    	
+    	newLastNode.element = c;
+    	newLastNode.next = null;
+    	oldLastNode.next = newLastNode;
+    	
+        return l;
     }
     
     // Testmetod: JunitListTest.testConcat()
