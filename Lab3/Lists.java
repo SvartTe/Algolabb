@@ -130,19 +130,17 @@ public class Lists {
     public static ListNode copyUpperCase(ListNode head) {
     	ListNode returnNode = new ListNode();
     	ListNode currentReturnNode = returnNode;
-    	ListNode currentNode = head.next;
-    	while(currentNode != null) {
-    		if(Character.isUpperCase(currentNode.element)) {
+    	ListNode currentNode = head;
+    	
+    	while (currentNode.next != null) {
+    		if (Character.isUpperCase(currentNode.element)) {
+    			currentReturnNode.next = new ListNode();
+    			currentReturnNode = currentReturnNode.next;
     			currentReturnNode.element = currentNode.element;
-    			if (currentNode.next == null)
-    				currentReturnNode.next = null;
-    			else {
-    				currentReturnNode.next = new ListNode();
-    				currentReturnNode = currentReturnNode.next;
-    			}
     		}
     		currentNode = currentNode.next;
     	}
+    	
         return returnNode;
     }
     
