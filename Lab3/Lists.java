@@ -132,7 +132,7 @@ public class Lists {
     	ListNode currentReturnNode = returnNode;
     	ListNode currentNode = head;
     	
-    	while (currentNode.next != null) {
+    	while (currentNode != null) {
     		if (Character.isUpperCase(currentNode.element)) {
     			currentReturnNode.next = new ListNode();
     			currentReturnNode = currentReturnNode.next;
