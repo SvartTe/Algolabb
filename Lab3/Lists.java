@@ -102,7 +102,7 @@ public class Lists {
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
     	StringBuilder returnString = new StringBuilder();
-    	ListNode currentNode = l;
+    	ListNode currentNode = l.next;
     	while(currentNode != null){
 //    		if(currentNode.element instanceof Object)	// For a scalable method; not compatible with char
 //    			returnString.append(currentNode.element.toString());
@@ -115,7 +115,7 @@ public class Lists {
     
     // Testmetod: JunitListTest.testContains()
     public static boolean contains(ListNode head,char c) {
-    	ListNode currentNode = head;
+    	ListNode currentNode = head.next;
     	while(currentNode != null) {
     		if (currentNode.element == c)
     			return true;
@@ -129,7 +129,7 @@ public class Lists {
     public static ListNode copyUpperCase(ListNode head) {
     	ListNode returnNode = new ListNode();
     	ListNode currentReturnNode = returnNode;
-    	ListNode currentNode = head;
+    	ListNode currentNode = head.next;
     	while(currentNode != null) {
     		if(Character.isUpperCase(currentNode.element)) {
     			currentReturnNode.element = currentNode.element;
@@ -149,7 +149,8 @@ public class Lists {
     public static ListNode addFirst(ListNode l,char c) {  
         ListNode newFirst = new ListNode();
         newFirst.element = c;
-        newFirst.next = l;
+        newFirst.next = l.next;
+        l.next = newFirst;
     	return newFirst;
     }
          
@@ -175,7 +176,7 @@ public class Lists {
     
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {  
-        getLastNode(l1).next = l2;
+        getLastNode(l1).next = l2.next;
         l2 = mkEmpty();    	
     	return l1;
     }
@@ -183,14 +184,14 @@ public class Lists {
     // Testmetod: JunitListTest.testAddAll()
     public static ListNode addAll(ListNode l1,ListNode l2) { 
     	ListNode l2Copy = copy(l2);
-    	concat(l1, l2Copy);
+    	concat(l1, l2Copy.next);
         return l1;
     }
       
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
     	ListNode reverseList = mkEmpty();
-    	ListNode runner = head;
+    	ListNode runner = head.next;
     	
     	while(runner != null){
     		addFirst(reverseList, runner.element);
