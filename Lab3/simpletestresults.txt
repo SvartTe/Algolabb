@@ -7,6 +7,6 @@ false
 13: SIRAP
 l4: PARIS
 l3: SIRAP-i-PARIS
-l4: PARIS
+l4: 
 l3: SIRAP-i-PARIS-palindrom
 l5: -palindrom
