@@ -1,0 +1,12 @@
+l1: XabIdRXA7pX
+l2: XabIdRXA7pX
+l2: SabIdRA7pP
+l1: XabIdRXA7pX
+true
+false
+13: SIRAP
+l4: PARIS
+l3: SIRAP-i-PARIS
+l4: 
+l3: SIRAP-i-PARIS-palindrom
+l5: -palindrom

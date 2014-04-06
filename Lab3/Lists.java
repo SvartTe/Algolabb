@@ -194,7 +194,7 @@ public class Lists {
     	if ( l1 == null || l2 == null)
             throw new ListsException("Lists: null passed to concat");
         getLastNode(l1).next = l2.next;
-        l2 = mkEmpty();	
+        l2.next = null;    	
     	return l1;
     }
     
