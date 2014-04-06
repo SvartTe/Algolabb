@@ -107,7 +107,7 @@ public class Lists {
 //    		if(currentNode.element instanceof Object)	// For a scalable method; not compatible with char
 //    			returnString.append(currentNode.element.toString());
 //    		else
-    			returnString.append(currentNode.element);
+	    		returnString.append(currentNode.element);
     		currentNode = currentNode.next;
     	}
          return returnString.toString();
@@ -151,7 +151,7 @@ public class Lists {
         newFirst.element = c;
         newFirst.next = l.next;
         l.next = newFirst;
-    	return newFirst;
+    	return l;
     }
          
     // This is a private utility method.
