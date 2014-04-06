@@ -101,16 +101,16 @@ public class Lists {
     
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
-    	String returnString = "";
+    	StringBuilder returnString = new StringBuilder();
     	ListNode currentNode = l;
     	while(currentNode != null){
 //    		if(currentNode.element instanceof Object)	// For a scalable method; not compatible with char
-//    			returnString.concat(currentNode.element.toString());
+//    			returnString.append(currentNode.element.toString());
 //    		else
-    			returnString = returnString + currentNode.element;
+    			returnString.append(currentNode.element);
     		currentNode = currentNode.next;
     	}
-         return returnString;
+         return returnString.toString();
     }
     
     // Testmetod: JunitListTest.testContains()
@@ -189,6 +189,14 @@ public class Lists {
       
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
-        return null;
+    	ListNode reverseList = mkEmpty();
+    	ListNode runner = head;
+    	
+    	while(runner != null){
+    		addFirst(reverseList, runner.element);
+    		runner = runner.next;
+    	}
+    		
+        return reverseList;
     }
 }
