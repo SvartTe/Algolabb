@@ -102,6 +102,8 @@ public class Lists {
     
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
+    	 if ( l == null )
+             throw new ListsException("Lists: null passed to toString");
     	StringBuilder returnString = new StringBuilder();
     	ListNode currentNode = l.next;
     	while(currentNode != null){
@@ -116,6 +118,8 @@ public class Lists {
     
     // Testmetod: JunitListTest.testContains()
     public static boolean contains(ListNode head,char c) {
+    	if ( head == null )
+            throw new ListsException("Lists: null passed to contains");
     	ListNode currentNode = head.next;
     	while(currentNode != null) {
     		if (currentNode.element == c)
@@ -128,6 +132,9 @@ public class Lists {
     
     // Testmetod: JunitListTest.testCopyUpperCase()
     public static ListNode copyUpperCase(ListNode head) {
+    	if ( head == null )
+            throw new ListsException("Lists: null passed to copyUpperCase");
+    	
     	ListNode returnNode = new ListNode();
     	ListNode currentReturnNode = returnNode;
     	ListNode currentNode = head;
@@ -145,7 +152,10 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testAddFirst()
-    public static ListNode addFirst(ListNode l,char c) {  
+    public static ListNode addFirst(ListNode l,char c) {
+    	if ( l == null )
+            throw new ListsException("Lists: null passed to addFirst");
+    	
         ListNode newFirst = new ListNode();
         newFirst.element = c;
         newFirst.next = l.next;
@@ -155,6 +165,9 @@ public class Lists {
          
     // This is a private utility method.
     private static ListNode getLastNode(ListNode head) {
+    	if ( head == null )
+            throw new ListsException("Lists: null passed to getLastNode");
+    	
         ListNode lastNode = head;
         while(lastNode.next != null)
         	lastNode = lastNode.next;
@@ -162,7 +175,10 @@ public class Lists {
     }
    
     // Testmetod: JunitListTest.testAddLast()
-    public static ListNode addLast(ListNode l,char c) {  
+    public static ListNode addLast(ListNode l,char c) { 
+    	if ( l == null )
+            throw new ListsException("Lists: null passed to addLast");
+    	
     	ListNode newLastNode = new ListNode();
     	ListNode oldLastNode = getLastNode(l);
     	
@@ -175,13 +191,17 @@ public class Lists {
     
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {  
+    	if ( l1 == null || l2 == null)
+            throw new ListsException("Lists: null passed to concat");
         getLastNode(l1).next = l2.next;
-        l2 = mkEmpty();    	
+        l2 = mkEmpty();	
     	return l1;
     }
     
     // Testmetod: JunitListTest.testAddAll()
-    public static ListNode addAll(ListNode l1,ListNode l2) { 
+    public static ListNode addAll(ListNode l1,ListNode l2) {
+    	if ( l1 == null || l2 == null)
+            throw new ListsException("Lists: null passed to addAll");
     	ListNode l2Copy = copy(l2);
     	concat(l1, l2Copy);
         return l1;
@@ -189,6 +209,8 @@ public class Lists {
       
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
+    	if ( head == null )
+            throw new ListsException("Lists: null passed to reverse");
     	ListNode reverseList = mkEmpty();
     	ListNode runner = head.next;
     	
