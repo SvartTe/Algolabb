@@ -1,10 +1,11 @@
+import java.util.Arrays;
 import java.util.Random;
 
 /**
  * Various algorithms for the maximum sub matrix sum problem.
  * 
- * @authors 
- * @version 2011-04-13
+ * @authors Sebastian Lindgren & Robert Larsson
+ * @version 2014-04-09
  */
 public class MaxSumTwoDimensions {
 
@@ -14,7 +15,17 @@ public class MaxSumTwoDimensions {
     
     // O(n^6)
     public static int maxSubMatrixSumBad( int[][] a ) {
-        // ...
+    	int[][] aCopy = a;
+    	Arrays.sort(aCopy);
+    	if(aCopy[aCopy.length][aCopy.length] < 0)
+    		return 0;
+    	
+    	for (int i1 = 0 ; i1 < a.length ; i1++){
+        	for(int i2 = 0; i2 < a.length ; i2++){
+        		
+        	}
+        }
+    
         return 0;
     }
  
