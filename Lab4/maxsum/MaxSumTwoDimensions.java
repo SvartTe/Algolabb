@@ -14,6 +14,12 @@ public class MaxSumTwoDimensions {
     // A couple of two dimensional algorithms for rectangular matrixes.
     
     // O(n^6)
+    
+    /**
+     * 
+     * @param a
+     * @return
+     */
     public static int maxSubMatrixSumBad( int[][] a ) {
     	int maxSum = 0;
     	int currentSum = 0;
@@ -33,7 +39,7 @@ public class MaxSumTwoDimensions {
     						maxSum = currentSum;
     					currentSum = 0;
     				}
-    
+   
         return maxSum;
     }
  
