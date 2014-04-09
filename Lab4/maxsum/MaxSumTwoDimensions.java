@@ -26,10 +26,13 @@ public class MaxSumTwoDimensions {
     		for(int xPosition = 0; xPosition < (a.length - size) ; xPosition++){
     			for(int yPosition = 0; yPosition < (a.length - size) ; yPosition++){
         			for(int i = xPosition ; i < (xPosition + size) ; i++){
-        				for(int j = yPosition ; j < (xPosition + size) ; i++){
+        				for(int j = yPosition ; j < (yPosition + size) ; j++){
         					currentSum += a[i][j];
+        					System.out.println("Currentsum: " + currentSum);
         				}
         			}
+        			System.out.println("Currentsum outside loop: " + currentSum);
+        			System.out.println("Maxsum: " + maxSum);
         			if(currentSum > maxSum)
         				maxSum = currentSum;
         			currentSum = 0;
@@ -118,10 +121,10 @@ public class MaxSumTwoDimensions {
 //         test(matrix_20x20);
         
         // Test the algorithms for random matrixes of increasing sizes.
-        for ( int size = 1; size <= 2048; size *= 2 ) {
-            int[][] m = randMatrix(size,size);
-            System.out.println("\nSize = " + size);
-            test(m);
-        }
+//        for ( int size = 1; size <= 2048; size *= 2 ) {
+//            int[][] m = randMatrix(size,size);
+//            System.out.println("\nSize = " + size);
+//            test(m);
+//        }
     }
 }
