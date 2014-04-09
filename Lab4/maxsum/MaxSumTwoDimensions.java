@@ -121,10 +121,10 @@ public class MaxSumTwoDimensions {
          test(matrix_20x20);
         
         // Test the algorithms for random matrixes of increasing sizes.
-//        for ( int size = 1; size <= 2048; size *= 2 ) {
-//            int[][] m = randMatrix(size,size);
-//            System.out.println("\nSize = " + size);
-//            test(m);
-//        }
+        for ( int size = 1; size <= 2048; size *= 2 ) {
+            int[][] m = randMatrix(size,size);
+            System.out.println("\nSize = " + size);
+            test(m);
+        }
     }
 }
