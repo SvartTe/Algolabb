@@ -23,8 +23,10 @@ public class MaxSumTwoDimensions {
 //    		return maxSum;
     	
     	for (int size = 1 ; size < a.length ; size++){
+    		System.out.println("Matris av storlek: " + size);
     		for(int xPosition = 0; xPosition < (a.length - size) ; xPosition++){
     			for(int yPosition = 0; yPosition < (a.length - size) ; yPosition++){
+    				System.out.println("Matris med start i " + xPosition + "," + yPosition);
         			for(int i = xPosition ; i < (xPosition + size) ; i++){
         				for(int j = yPosition ; j < (yPosition + size) ; j++){
         					currentSum += a[i][j];
