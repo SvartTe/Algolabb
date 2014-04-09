@@ -14,6 +14,13 @@ public class MaxSumTwoDimensions {
     // A couple of two dimensional algorithms for rectangular matrixes.
     
     // O(n^6)
+    /**
+     *  "If you need more than 3 levels of indentation, you're screwed anyway, 
+     *  and should fix your program."
+     *  	--Linus Torvalds, 1995
+     * @param a
+     * @return
+     */
     public static int maxSubMatrixSumBad( int[][] a ) {
     	int maxSum = 0;
     	int currentSum = 0;
@@ -22,12 +29,12 @@ public class MaxSumTwoDimensions {
 //    	if(aCopy[aCopy.length][aCopy.length] < 0)
 //    		return maxSum;
     	
-    	for (int size = 1 ; size < a.length ; size++){
+    	for (int size = 1 ; size <= a.length ; size++){
     		System.out.println("Matris av storlek: " + size);
     		// Bestämmer position av matrisen i x-led
-    		for(int xPosition = 0; xPosition < (a.length - size) ; xPosition++){
+    		for(int xPosition = 0; xPosition <= (a.length - size) ; xPosition++){
     			// Bestämmer position av matrisen i y-led
-    			for(int yPosition = 0; yPosition < (a.length - size) ; yPosition++){
+    			for(int yPosition = 0; yPosition <= (a.length - size) ; yPosition++){
     				System.out.println("Matris med start i " + xPosition + "," + yPosition);
     				// Räknar ihop isidan av nuvarande matris
         			for(int i = xPosition ; i < (xPosition + size) ; i++){
