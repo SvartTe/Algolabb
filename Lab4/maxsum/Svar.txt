@@ -1,7 +1,13 @@
 Uppgift 1:
-  Stämmer det att en tiofaldig ökning av fältlängden ger en
-  hundrafaldig ökning av beräkningstiden för en algoritm med kvadratisk tidskomplexitet, och en
-  tusenfaldig ökning för en med kubisk komplexitet?
-  
-  Svar:
+    Stämmer det att en tiofaldig ökning av fältlängden ger en
+    hundrafaldig ökning av beräkningstiden för en algoritm med kvadratisk tidskomplexitet, och en
+    tusenfaldig ökning för en med kubisk komplexitet?
     
+    Svar:
+    
+    
+Uppgift 2:
+    Hur stor matris klarar algoritmen på en minut?
+    
+    Svar:
+
