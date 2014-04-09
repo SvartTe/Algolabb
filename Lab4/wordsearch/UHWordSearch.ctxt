@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=UHWordSearch()
+comment0.text=\r\n\ Constructor\ for\ WordSearch\ class.\r\n\ Prompts\ for\ and\ reads\ puzzle\ and\ dictionary\ files.\r\n
+comment1.params=
+comment1.target=int\ solvePuzzle()
+comment1.text=\r\n\ Routine\ to\ solve\ the\ word\ search\ puzzle.\r\n\ Performs\ checks\ in\ all\ eight\ directions.\r\n\ @return\ number\ of\ matches\r\n
+comment2.params=baseRow\ baseCol\ rowDelta\ colDelta
+comment2.target=int\ solveDirection(int,\ int,\ int,\ int)
+comment2.text=\r\n\ Search\ the\ grid\ from\ a\ starting\ point\ and\ direction.\r\n\ @return\ number\ of\ matches\r\n\ @author\ UH\ 2006-04-06\:\ Adapted\ the\ algorithm\ so\ it\ can\ use\ different\r\n\ search\ strategies\ in\ the\ dictionary\r\n
+comment3.params=message
+comment3.target=java.io.BufferedReader\ openFile(java.lang.String)
+comment3.text=\r\n\ Print\ a\ prompt\ and\ open\ a\ file.\r\n\ Retry\ until\ open\ is\ successful.\r\n\ Program\ exits\ if\ end\ of\ file\ is\ hit.\r\n
+comment4.params=
+comment4.target=void\ readPuzzle()
+comment4.text=\r\n\ Routine\ to\ read\ the\ grid.\r\n\ Checks\ to\ ensure\ that\ the\ grid\ is\ rectangular.\r\n\ Checks\ to\ make\ sure\ that\ capacity\ is\ not\ exceeded\ is\ omitted.\r\n
+comment5.params=
+comment5.target=void\ readWords()
+comment5.text=\r\n\ Routine\ to\ read\ the\ dictionary.\r\n\ Error\ message\ is\ printed\ if\ dictionary\ is\ not\ sorted.\r\n
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+numComments=7

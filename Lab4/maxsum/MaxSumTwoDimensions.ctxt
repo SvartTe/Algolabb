@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=a
+comment0.target=int\ maxSubMatrixSumBad(int[][])
+comment1.params=a
+comment1.target=int\ maxSubMatrixSumBetter(int[][])
+comment2.params=a
+comment2.target=int\ maxSubMatrixSumEvenBetter(int[][])
+comment3.params=m\ n
+comment3.target=int[][]\ randMatrix(int,\ int)
+comment4.params=m
+comment4.target=void\ test(int[][])
+comment5.params=arg
+comment5.target=void\ main(java.lang.String[])
+numComments=6

@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=a
+comment0.target=int\ maxSubSum1(int[])
+comment0.text=\nCubic\ maximum\ contiguous\ subsequence\ sum\ algorithm.\nseqStart\ and\ seqEnd\ represent\ the\ actual\ best\ sequence.\n\n
+comment1.params=a
+comment1.target=int\ maxSubSum2(int[])
+comment1.text=\nQuadratic\ maximum\ contiguous\ subsequence\ sum\ algorithm.\nseqStart\ and\ seqEnd\ represent\ the\ actual\ best\ sequence.\n\n
+comment2.params=a
+comment2.target=int\ maxSubSum3(int[])
+comment2.text=\nLinear-time\ maximum\ contiguous\ subsequence\ sum\ algorithm.\nseqStart\ and\ seqEnd\ represent\ the\ actual\ best\ sequence.\n\n
+comment3.params=a\ left\ right
+comment3.target=int\ maxSumRec(int[],\ int,\ int)
+comment3.text=\nRecursive\ maximum\ contiguous\ subsequence\ sum\ algorithm.\nFinds\ maximum\ sum\ in\ subarray\ spanning\ a[left..right].\nDoes\ not\ attempt\ to\ maintain\ actual\ best\ sequence.\n\n
+comment4.params=a\ b\ c
+comment4.target=int\ max3(int,\ int,\ int)
+comment4.text=\nReturn\ maximum\ of\ three\ integers.\n\n
+comment5.params=a
+comment5.target=int\ maxSubSum4(int[])
+comment5.text=\nDriver\ for\ divide-and-conquer\ maximum\ contiguous\nsubsequence\ sum\ algorithm.\n\n
+comment6.params=n\ alg
+comment6.target=void\ getTimingInfo(int,\ int)
+comment7.params=args
+comment7.target=void\ main(String[])
+comment7.text=\nSimple\ test\ program.\n\n
+numComments=8
