@@ -15,18 +15,29 @@ public class MaxSumTwoDimensions {
     
     // O(n^6)
     public static int maxSubMatrixSumBad( int[][] a ) {
-    	int[][] aCopy = a;
-    	Arrays.sort(aCopy);
-    	if(aCopy[aCopy.length][aCopy.length] < 0)
-    		return 0;
+    	int maxSum = 0;
+    	int currentSum = 0;
+//    	int[][] aCopy = a;
+//    	Arrays.sort(aCopy);
+//    	if(aCopy[aCopy.length][aCopy.length] < 0)
+//    		return maxSum;
     	
-    	for (int i1 = 0 ; i1 < a.length ; i1++){
-        	for(int i2 = 0; i2 < a.length ; i2++){
-        		
-        	}
+    	for (int size = 1 ; size < a.length ; size++){
+    		for(int xPosition = 0; xPosition < (a.length - size) ; xPosition++){
+    			for(int yPosition = 0; yPosition < (a.length - size) ; yPosition++){
+        			for(int i = xPosition ; i < (xPosition + size) ; i++){
+        				for(int j = yPosition ; j < (xPosition + size) ; i++){
+        					currentSum += a[i][j];
+        				}
+        			}
+        			if(currentSum > maxSum)
+        				maxSum = currentSum;
+        			currentSum = 0;
+        		}
+    		}
         }
     
-        return 0;
+        return maxSum;
     }
  
     // O(n^5)
@@ -66,7 +77,7 @@ public class MaxSumTwoDimensions {
             {-5,10,-2,1},
             {4,5,-7,1}
         };
-//         test(sampleMatrix);
+         test(sampleMatrix);
             
         int[][] matrix_10x10 = {    // max sum is 213
             {39,-33,-5,-21,-31,-33,31,32,37,-37},
