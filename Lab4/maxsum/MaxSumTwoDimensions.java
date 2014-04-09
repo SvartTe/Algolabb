@@ -18,6 +18,7 @@ public class MaxSumTwoDimensions {
      *  "If you need more than 3 levels of indentation, you're screwed anyway, 
      *  and should fix your program."
      *  	--Linus Torvalds, 1995
+     * 
      * @param a
      * @return
      */
@@ -29,29 +30,18 @@ public class MaxSumTwoDimensions {
 //    	if(aCopy[aCopy.length][aCopy.length] < 0)
 //    		return maxSum;
     	
-    	for (int size = 1 ; size <= a.length ; size++){
-    		System.out.println("Matris av storlek: " + size);
-    		// Bestämmer position av matrisen i x-led
-    		for(int xPosition = 0; xPosition <= (a.length - size) ; xPosition++){
-    			// Bestämmer position av matrisen i y-led
-    			for(int yPosition = 0; yPosition <= (a.length - size) ; yPosition++){
-    				System.out.println("Matris med start i " + xPosition + "," + yPosition);
-    				// Räknar ihop isidan av nuvarande matris
-        			for(int i = xPosition ; i < (xPosition + size) ; i++){
-        				for(int j = yPosition ; j < (yPosition + size) ; j++){
-        					currentSum += a[i][j];
-//        					System.out.println("Currentsum: " + currentSum);
-        				}
-        			}
-        			System.out.println("Currentsum outside loop: " + currentSum);
-        			System.out.println("Maxsum: " + maxSum);
-        			if(currentSum > maxSum)
-        				maxSum = currentSum;
-        			currentSum = 0;
-        		}
-    		}
-        }
-    
+    	for (int xSize = 1 ; xSize < a.length ; xSize++)
+    		for(int ySize = 1 ; ySize < a.length ; ySize++)
+    			for(int xPosition = 0; xPosition <= (a.length - xSize) ; xPosition++)
+    				for(int yPosition = 0; yPosition <= (a.length - ySize) ; yPosition++){
+    					for(int i = xPosition ; i < (xPosition + xSize) ; i++)
+    						for(int j = yPosition ; j < (yPosition + ySize) ; j++)
+    							currentSum += a[i][j];
+    					if(currentSum > maxSum)
+    						maxSum = currentSum;
+    					currentSum = 0;
+    				}
+   
         return maxSum;
     }
  
@@ -87,10 +77,10 @@ public class MaxSumTwoDimensions {
         
         // This is the matrix in the lab PM.
         int[][] sampleMatrix = {     // max sum is 21
-            {-1,-2,1,3},
-            {0,2,0,8},
-            {-5,10,-2,1},
-            {4,5,-7,1}
+            {-1,-2, 1, 3},
+            { 0, 2, 0, 8},
+            {-5,10,-2, 1},
+            { 4, 5,-7, 1}
         };
          test(sampleMatrix);
             
@@ -106,7 +96,7 @@ public class MaxSumTwoDimensions {
             {17,-50,33,-21,-30,-44,-28,-12,-37,-6},
             {-35,35,-27,44,-42,24,36,43,-49,-46}
         };
-//         test(matrix_10x10);
+         test(matrix_10x10);
         
         int[][] matrix_20x20 = {    // max sum is 346
         	{39,19,39,21,-19,-40,-20,9,-29,42,-48,46,-7,31,-50,-41,5,11,30,23},
@@ -130,7 +120,7 @@ public class MaxSumTwoDimensions {
         	{-11,-9,-48,43,13,-47,-1,-32,-45,-10,-22,-26,36,20,-27,44,29,6,18,-28},
         	{28,46,46,-4,-6,-16,-38,-46,-49,-46,-38,-38,2,46,3,49,-12,-11,-9,31}
         };
-//         test(matrix_20x20);
+         test(matrix_20x20);
         
         // Test the algorithms for random matrixes of increasing sizes.
 //        for ( int size = 1; size <= 2048; size *= 2 ) {
