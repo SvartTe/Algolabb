@@ -43,7 +43,7 @@ public class MaxSumTwoDimensions {
 
 	// O(n^5)
 	/**
-	 * Arbetskopia?
+	 * 
 	 * @param a
 	 * @return
 	 */
@@ -51,24 +51,21 @@ public class MaxSumTwoDimensions {
 		int maxSum = 0;
 		int currentSum = 0;
 
-		
-		
-		for (int xSize = 1 ; xSize <= a.length ; xSize++){
-			for(int ySize = 1 ; ySize <= a.length ; ySize++) {
-				System.out.println("Current size: " + xSize + "x" + ySize);
-				for(int xPosition = 0; xPosition <= (a.length - xSize) ; xPosition++) {
-					for(int yPosition = 0; yPosition <= (a.length - ySize) ; yPosition++){
-						System.out.println("Current position: " + xPosition + "," + yPosition);
-						currentSum += a[xPosition][yPosition];
-						System.out.println("Currentsum: " + currentSum);
+		for (int startRow = 0; startRow < a.length; startRow++) {
+			for (int endRow = startRow; endRow < a.length; endRow++) {
+				for (int startCol = 0; startCol < a[0].length; startCol++) {
+					currentSum = 0;
+					for(int endCol = startCol; endCol < a[0].length; endCol++) {
+						for(int colPos = startCol; colPos <= endCol; colPos++)
+							currentSum += a[endRow][colPos];
+						
+						if (currentSum>maxSum)
+							maxSum=currentSum;
 					}
 				}
-				if(currentSum > maxSum)
-					maxSum = currentSum;
-				currentSum = 0;
 			}
 		}
-
+		
 		return maxSum;
 	}
 
