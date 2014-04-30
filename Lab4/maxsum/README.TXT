@@ -4,12 +4,12 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE: Lab 4 MaxSum
-PURPOSE OF PROJECT: 
-VERSION or DATE:
-HOW TO START THIS PROJECT:
+PROJECT TITLE: Lab 4: Live Free or Code Hard
+PORPOISE OF PROJECT: Flipper 
+VERSION or DATE: MaxSum: Code Harder
+HOW TO START THIS PROJECT: With a vengeance 
 AUTHORS: Sebastian Lidngren & Robert Larsson
-USER INSTRUCTIONS:
+USER INSTRUCTIONS: Run code. Duck.
 
 
 Question 5 - We go Svensk.
@@ -25,4 +25,11 @@ Question 5 - We go Svensk.
 		I praktikten ser det ut att bli kvadratiskt.
 	4.
 		Avvikelserna med tider på under två sekunder och liknande kan förklaras 
-		med att svaret av ren slump råkar hittas tidigt. 
+		med att svaret av ren slump råkar hittas tidigt eller sent. Detta är ju
+		särskilt sant för den linjära algoritmen. 
+
+Uppgift 1
+	1.
+		Ja, det stämmer med mindre avvikelser pga slumpens inverkan.
+	2.
+		Den hann till men inte med 128x128 matrisen.
