@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=void\ reverseInput()
+comment1.params=m\ n
+comment1.target=int\ multiply(int,\ int)
+comment2.params=n
+comment2.target=int\ countDigits(int)
+comment3.params=element\ l
+comment3.target=ListNode\ cons(int,\ ListNode)
+comment4.params=l
+comment4.target=String\ toString(ListNode)
+comment5.params=l
+comment5.target=String\ toStringRec(ListNode)
+comment6.params=prompt\ l
+comment6.target=void\ print(String,\ ListNode)
+comment7.params=l
+comment7.target=ListNode\ copy(ListNode)
+comment8.params=l1\ l2
+comment8.target=ListNode\ append(ListNode,\ ListNode)
+comment9.params=args
+comment9.target=void\ main(String[])
+comment9.text=\nSome\ test\ cases.\nUncomment\ as\ you\ proceed\!\n\n
+numComments=10

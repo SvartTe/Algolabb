@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Gui()
+comment1.target=void\ makeFrame()
+comment1.text=\nCreate\ the\ Swing\ frame\ and\ its\ content.\n\n
+comment2.target=JPanel\ createInputPanel()
+comment3.params=name\ flake
+comment3.target=JPanel\ createPanelElement(String,\ Flake)
+comment4.params=flake\ maxLevel
+comment4.target=void\ drawLevelsUpTo(Flake,\ int)
+comment5.target=int\ computeAppropriateFlakeSize()
+comment6.target=void\ toggleTrace()
+comment6.text=\nToggles\ the\ tracing\ of\ the\ turle\ drawing\ on\ and\ off\n\n
+comment7.target=void\ quit()
+comment7.text=\nQuit\ function\:\ quit\ the\ application.\n\n
+numComments=8

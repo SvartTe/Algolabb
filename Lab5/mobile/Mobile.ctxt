@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=weight
+comment0.target=Mobile(float)
+comment1.params=left\ leftLength\ right\ rightLength
+comment1.target=Mobile(Mobile,\ float,\ Mobile,\ float)
+comment10.target=boolean\ isSimple()
+comment11.params=args
+comment11.target=void\ main(String[])
+comment2.target=float\ getWeight()
+comment3.target=int\ getHeight()
+comment4.target=void\ flatten()
+comment5.target=void\ prettyPrint()
+comment6.target=boolean\ isBalanced()
+comment7.params=rhs
+comment7.target=boolean\ equals(Mobile)
+comment8.target=Mobile\ clone()
+comment9.target=void\ mirror()
+numComments=12

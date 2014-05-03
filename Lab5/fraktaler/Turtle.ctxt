@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=canvas
+comment0.target=Turtle(Canvas)
+comment1.params=distance
+comment1.target=void\ walk(double)
+comment2.params=distance
+comment2.target=void\ jump(double)
+comment3.params=p
+comment3.target=void\ jumpTo(Point)
+comment4.params=angle
+comment4.target=void\ turn(double)
+comment5.params=angle
+comment5.target=void\ turnTo(double)
+comment6.params=distance
+comment6.target=Point\ nextPos(double)
+comment7.params=degrees
+comment7.target=double\ toRad(double)
+numComments=8

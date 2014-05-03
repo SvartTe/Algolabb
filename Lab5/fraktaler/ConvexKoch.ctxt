@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=turtle\ n\ size
+comment0.target=void\ draw(Turtle,\ int,\ double)
+comment1.params=n\ size
+comment1.target=void\ drawSide(int,\ double)
+numComments=2

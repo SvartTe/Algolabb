@@ -1,0 +1,20 @@
+#BlueJ package file
+package.editor.height=400
+package.editor.width=560
+package.editor.x=265
+package.editor.y=52
+package.numDependencies=0
+package.numTargets=1
+package.showExtends=true
+package.showUses=true
+target1.editor.height=750
+target1.editor.width=1035
+target1.editor.x=207
+target1.editor.y=76
+target1.height=50
+target1.name=Mobile
+target1.showInterface=false
+target1.type=ClassTarget
+target1.width=80
+target1.x=190
+target1.y=60

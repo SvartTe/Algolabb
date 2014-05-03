@@ -1,0 +1,4 @@
+#BlueJ class context
+comment0.params=element\ next
+comment0.target=ListNode(int,\ ListNode)
+numComments=1

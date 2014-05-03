@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=turtle\ n\ size
+comment0.target=void\ draw(Turtle,\ int,\ double)
+comment1.params=n\ turnSide\ size
+comment1.target=void\ drawPsPart(int,\ int,\ double)
+comment2.params=hand\ angle
+comment2.target=void\ turnToLeft(int,\ double)
+comment3.params=hand\ angle
+comment3.target=void\ turnToRight(int,\ double)
+comment4.params=direction
+comment4.target=int\ other(int)
+comment5.params=size
+comment5.target=double\ shorter(double)
+numComments=6
