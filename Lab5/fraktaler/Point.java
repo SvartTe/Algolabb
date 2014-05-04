@@ -1,3 +1,5 @@
+package fraktaler;
+
 public class Point {
 	double x,y;
 	

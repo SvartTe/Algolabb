@@ -1,3 +1,5 @@
+package fraktaler;
+
 public class ConvexKoch extends Flake {
 	
 	public void draw(Turtle turtle,int n,double size) {

@@ -1,12 +1,18 @@
+package linearrecursion;
+
 import java.io.IOException;
 /**
- * @author NN
- * @version 2012-05-
+ * @author R. Larsson & S. Lindgren
+ * @version 2014-05-04
  */
 public class LinearRecursion {
 // A.1
-    public static void reverseInput() {
-        // toDo 
+    public static void reverseInput() throws IOException {
+    	char a = (char)System.in.read();
+    	if (a != '\n') {
+    		reverseInput();
+    		System.out.print(a);
+    	}
     }
         
 // A.2

@@ -1,3 +1,5 @@
+package fraktaler;
+
 public class Turtle {
     private Point position = new Point();
 	private double direction = 0.0;

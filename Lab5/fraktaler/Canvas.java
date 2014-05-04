@@ -1,3 +1,5 @@
+package fraktaler;
+
 import javax.swing.*;
 import java.awt.*;
 
