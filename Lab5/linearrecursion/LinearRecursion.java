@@ -57,7 +57,10 @@ public class LinearRecursion {
 // A.4
  public static ListNode copy( ListNode l ) {
         // toDo 
-        return null;
+	 if (l == null)
+		 return l;
+	 else
+		 return cons(l.element, copy(l.next));
  }
     
 // A.5  
@@ -82,9 +85,9 @@ public class LinearRecursion {
 //      System.out.println(multiply(0,7));
 //      System.out.println(multiply(5,0));
 // A.3
-      System.out.println(countDigits(0));
-      System.out.println(countDigits(5));
-      System.out.println(countDigits(123));
+//      System.out.println(countDigits(0));
+//      System.out.println(countDigits(5));
+//      System.out.println(countDigits(123));
                 
         // An array of some test lists
         ListNode[] ll = {
