@@ -54,20 +54,21 @@ public class LinearRecursion {
         System.out.println(prompt + ": " + toString(l));
     }
 
-// A.4
- public static ListNode copy( ListNode l ) {
-        // toDo 
-	 if (l == null)
-		 return l;
-	 else
-		 return cons(l.element, copy(l.next));
- }
-    
-// A.5  
- public static ListNode append( ListNode l1, ListNode l2 ) {
-        // toDo
-        return null;
- }
+    // A.4
+    public static ListNode copy( ListNode l ) {
+    	if (l == null)
+    		return l;
+    	else
+    		return cons(l.element, copy(l.next));
+    }
+
+    // A.5  
+    public static ListNode append( ListNode l1, ListNode l2 ) {
+    	if (l1 == null)
+    		return copy(l2);
+    	else
+    		return cons(l1.element, append(l1.next, l2));
+    }
     
 /**********************************************
  * Some test cases.
@@ -104,20 +105,20 @@ public class LinearRecursion {
 //             print("l"+i,ll[i]); // original should be untouched
 //         }
 // A.5     
-//         System.out.println("test append from left"); 
-//         for ( int i = 0; i < ll.length - 1; i++ ) {
-//             ListNode l = append(ll[i],ll[ll.length-1]);
-//             print("l",l);       // result
-//             print("l"+i,ll[i]); // original should be untouched
-//             print("l"+(ll.length-1),ll[ll.length-1]); // original should be untouched
-//         }
+         System.out.println("test append from left"); 
+         for ( int i = 0; i < ll.length - 1; i++ ) {
+             ListNode l = append(ll[i],ll[ll.length-1]);
+             print("l",l);       // result
+             print("l"+i,ll[i]); // original should be untouched
+             print("l"+(ll.length-1),ll[ll.length-1]); // original should be untouched
+         }
         
-//         System.out.println("test append from right"); 
-//         for ( int i = 0; i < ll.length - 1; i++ ) {
-//             ListNode l = append(ll[ll.length-1],ll[i]);
-//             print("l",l);       // result
-//             print("l"+(ll.length-1),ll[ll.length-1]); // original should be untouched
-//             print("l"+i,ll[i]); // original should be untouched
-//         }
+         System.out.println("test append from right"); 
+         for ( int i = 0; i < ll.length - 1; i++ ) {
+             ListNode l = append(ll[ll.length-1],ll[i]);
+             print("l",l);       // result
+             print("l"+(ll.length-1),ll[ll.length-1]); // original should be untouched
+             print("l"+i,ll[i]); // original should be untouched
+         }
 	}
 }
