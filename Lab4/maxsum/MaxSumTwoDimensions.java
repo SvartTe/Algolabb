@@ -26,16 +26,18 @@ public class MaxSumTwoDimensions {
 		int maxSum = 0;
 		int currentSum = 0;
 
-		for (int xSize = 1 ; xSize < a.length ; xSize++)
-			for(int ySize = 1 ; ySize < a.length ; ySize++)
-				for(int xPosition = 0; xPosition <= (a.length - xSize) ; xPosition++)
-					for(int yPosition = 0; yPosition <= (a.length - ySize) ; yPosition++){
-						for(int i = xPosition ; i < (xPosition + xSize) ; i++)
-							for(int j = yPosition ; j < (yPosition + ySize) ; j++)
-								currentSum += a[i][j];
+		for (int rowStart = 0 ; rowStart < a.length ; rowStart++)
+			for(int rowEnd = 0 ; rowEnd < a.length ; rowEnd++)
+				for(int colStart = 0; colStart < a[0].length; colStart++)
+					for(int colEnd = 0; colEnd < a[0].length; colEnd++){
+						
+						currentSum = 0;
+						
+						for(int rowPos = rowStart; rowPos <= rowEnd; rowPos++)
+							for(int colPos = colStart; colPos <= colEnd; colPos++)
+								currentSum += a[rowPos][colPos];
 						if(currentSum > maxSum)
 							maxSum = currentSum;
-						currentSum = 0;
 					}
 
 		return maxSum;
@@ -76,22 +78,23 @@ public class MaxSumTwoDimensions {
 	public static int maxSubMatrixSumEvenBetter( int[][] a ) {
 
 		int maxSum = -0;
-		int currentSum;
+		int currentSum = 0;
 
 		int rowLen = a.length;
 		int colLen = a[0].length;
 
-		for (int rowStart = 0; rowStart < rowLen*colLen; rowStart++)
-			for (int colStart = rowStart; colStart < rowLen*colLen; colStart++) {
-				currentSum = 0;
-				// knasloop istället. Var detta för effektivt?
-				for (int pos = rowStart; pos <= colStart; pos++)
-					if(pos%rowLen >= rowStart%rowLen && pos%rowLen <= colStart%rowLen)
-						currentSum += a[pos/rowLen][pos%rowLen];
-				
-				if(currentSum > maxSum)
-					maxSum = currentSum;
+		for (int startRow = 0; startRow < rowLen; startRow++) {
+			for (int endRow = startRow; endRow < rowLen; endRow++) {
+                currentSum = 0;
+				for (int endCol = 0; endCol < colLen; endCol++) {
+					for (int rowPos = startRow; rowPos <= endRow; rowPos++) {
+						currentSum += a[rowPos][endCol];
+					}
+					currentSum = Math.max(0, currentSum);
+					maxSum = Math.max(maxSum, currentSum);
+				}
 			}
+		}
 			
 		return maxSum;
 	}
@@ -108,7 +111,7 @@ public class MaxSumTwoDimensions {
 		// Uncomment as you proceed!
 		System.out.println("EvenBetter: "+maxSubMatrixSumEvenBetter(m));
 //		System.out.println("Better: "+maxSubMatrixSumBetter(m));
-//		System.out.println("Bad: "+maxSubMatrixSumBad(m));
+		System.out.println("Bad: "+maxSubMatrixSumBad(m));
 	}
 
 	public static void main(String[] arg) {
@@ -162,7 +165,7 @@ public class MaxSumTwoDimensions {
 		test(matrix_20x20);
 
 //		 Test the algorithms for random matrixes of increasing sizes.
-		        for ( int size = 1; size <= 2048; size *= 2 ) {
+		        for ( int size = 1; size <= 128; size *= 2 ) {
 		            int[][] m = randMatrix(size,size);
 		            System.out.println("\nSize = " + size);
 		            test(m);
