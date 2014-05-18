@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=row\ col
+comment0.target=Point(int,\ int)
+comment1.params=target
+comment1.target=Point.Direction\ getDirection(Point)
+comment2.params=d
+comment2.target=void\ move(Direction)
+numComments=3
