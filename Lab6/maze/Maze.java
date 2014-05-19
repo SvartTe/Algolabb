@@ -1,5 +1,7 @@
 
 public class Maze extends Board {
+	// Someway to store rooms
+	// How about a array?
   		
     public Maze( int rows, int cols ) {
     	super(rows,cols);
