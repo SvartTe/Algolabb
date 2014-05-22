@@ -81,5 +81,20 @@ public class BoardDisplay extends Board implements Observer {
 	    
 	public void update(Observable o, Object arg) {
 //		 Develop this method!
+		if(	arg instanceof Pair<?,?> && 
+			( ((Pair) arg).first instanceof Point && 
+			((Pair) arg).second instanceof Point )){
+			
+			Pair<Point, Point> pear = (Pair<Point, Point>) arg;
+			knockDownWall(((Maze)o).getCellId((pear.first)), 
+				(pear.first).getDirection(pear.second));	// Jag har vunnit kast med liten variabel
+		}
+		else {
+			drawGrid();
+			knockDownWall(0, Point.Direction.LEFT);
+			knockDownWall(0, Point.Direction.UP);
+			knockDownWall(maxCell - 1, Point.Direction.RIGHT);
+			knockDownWall(maxCell - 1, Point.Direction.DOWN);
+		}
 	}
 }

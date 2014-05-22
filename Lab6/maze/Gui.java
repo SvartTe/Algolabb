@@ -77,8 +77,11 @@ public class Gui
      */
     private void createMaze()
     {
-    	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
-//    	Develop this method!
+    	Maze zork = new Maze(height, width);
+    	BoardDisplay bored = new BoardDisplay(canvas, height, width);
+    	zork.addObserver(bored);
+    	zork.create();
+    	
     	searchButton.setEnabled(true);
     }
 
