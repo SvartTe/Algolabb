@@ -1,39 +1,42 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 
 public class Maze extends Board {
-	// Someway to store rooms
-	// How about a array?
 	// A twisty maze of rooms, all alike.
 	DisjointSets doors;
+	ExtendedGraph extendo;
 	
 	public Maze( int rows, int cols ) {
 		super(rows,cols);
+		extendo = new ExtendedGraph();
+		// Stop the user from making a single room house
+		if (rows == 1 && cols == 1) {
+			System.out.println("Don't be silly now... No one likes a smartass.");
+			System.exit(-1);
+		}
 		doors = new DisjointSets(maxCell);
-		// We how have a list of points
+		// We how have a list of disjointed sets
 		// We am go too far
-		//    	 Implement this!
 	}
 
 	public void create() {
-		//    	 Implement this method!
 		// Let us assume that ID 0 is the set starting position and
 		// ID Board.maxCell is end position
-		// Begin crashing walls from position 0
+		// Begin crashing
 		Random rng = new Random();
 		boolean jobDone = false;
 		int rand1, rand2;
 		Point neighbor;
 		Pair<Point, Point> pear;
 		
+		this.addObserver(extendo);
+		
 		this.setChanged();
 		notifyObservers();
 		
-		while(!jobDone){		// VERSION ! ONLY, continue until there's a passage between
-															// entrance and exit. Not guaranteed to be connected to every cell
+		while(!jobDone){		
+															
 			rand1 = rng.nextInt(maxCell);
 			rand2 = rng.nextInt(maxCell);
 			
@@ -63,8 +66,12 @@ public class Maze extends Board {
 	}
 
 	public void search() {
-		//    	 Implement this method!
+		extendo.dijkstra(0);
+		List<Integer> rutor = extendo.getPath(maxCell-1);
+		
+		for(Integer punkter: rutor) {
+			this.setChanged();
+			notifyObservers(punkter);
+		}
 	}
-
-	//    ...
 }

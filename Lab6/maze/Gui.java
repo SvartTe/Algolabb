@@ -22,6 +22,7 @@ public class Gui
     private JButton quitButton;    
     private int width = 0, height = 0;
     private Canvas canvas;
+    private Maze zork;			// Our maze
     
     /**
      * Create an Maze explorer and display its GUI on screen.
@@ -77,7 +78,7 @@ public class Gui
      */
     private void createMaze()
     {
-    	Maze zork = new Maze(height, width);
+    	zork = new Maze(height, width);
     	BoardDisplay bored = new BoardDisplay(canvas, height, width);
     	zork.addObserver(bored);
     	zork.create();
@@ -90,8 +91,7 @@ public class Gui
      */
     private void searchMaze()
     {
-    	showMessage("Fake search"); // Please remove!
-//    	Develop this method!
+    	zork.search();
     }
       
     // ---- Swing stuff to build the frame and all its components and menus ----

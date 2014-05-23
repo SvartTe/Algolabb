@@ -79,8 +79,13 @@ public class BoardDisplay extends Board implements Observer {
 		canvas.drawLine( colOffset + c1, rowOffset + r1, colOffset + c2, rowOffset + r2 );
 	}
 	    
+	/**
+	 * Group 34 can into JavaDoc, Weiss cannot into JavaDoc
+	 * @param o		This will always be the maze
+	 * @param arg	This will either be a pair of points, which makes it 
+	 * 				knock down a wall, or an Integer, which makes it draw a dot
+	 */
 	public void update(Observable o, Object arg) {
-//		 Develop this method!
 		if(	arg instanceof Pair<?,?> && 
 			( ((Pair) arg).first instanceof Point && 
 			((Pair) arg).second instanceof Point )){
@@ -88,6 +93,8 @@ public class BoardDisplay extends Board implements Observer {
 			Pair<Point, Point> pear = (Pair<Point, Point>) arg;
 			knockDownWall(((Maze)o).getCellId((pear.first)), 
 				(pear.first).getDirection(pear.second));	// Jag har vunnit kast med liten variabel
+		} else if (arg instanceof Integer) {
+			fillCell((Integer)arg);
 		}
 		else {
 			drawGrid();
