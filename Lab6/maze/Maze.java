@@ -66,7 +66,7 @@ public class Maze extends Board {
 	}
 
 	public void search() {
-		extendo.dijkstra(0);
+		extendo.unweighted(0);
 		List<Integer> rutor = extendo.getPath(maxCell-1);
 		
 		for(Integer punkter: rutor) {
