@@ -82,7 +82,6 @@ public class Gui
     	BoardDisplay bored = new BoardDisplay(canvas, height, width);
     	zork.addObserver(bored);
     	zork.create();
-    	
     	searchButton.setEnabled(true);
     }
 

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=maxRow\ maxCol
+comment0.target=Board(int,\ int)
+comment1.params=p
+comment1.target=int\ getCellId(Point)
+comment2.params=cellId
+comment2.target=int\ getRow(int)
+comment3.params=cellId
+comment3.target=int\ getCol(int)
+comment4.params=p
+comment4.target=boolean\ isValid(Point)
+numComments=5

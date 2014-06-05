@@ -39,7 +39,7 @@ public class Gui {
 	 * Create the Swing frame and its content.
 	 */
 	private void makeFrame() {
-		frame = new JFrame("Fractal flake displayer");
+		frame = new JFrame("Fractal flake disflayer");
 		JPanel contentPane = (JPanel)frame.getContentPane();
 		contentPane.setBorder(new EmptyBorder(6, 6, 6, 6));
 		// Specify the layout manager with nice spacing
@@ -140,7 +140,7 @@ public class Gui {
 	}
 	
 	/**
-	 * Toggles the tracing of the turle drawing on and off
+	 * Toggles the tracing of the turdle drawing on and off
 	 */
 	private void toggleTrace() {
 		canvas.toggleTrace();

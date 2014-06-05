@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=buttonText\ generator
+comment0.target=NumberPane(String,\ NumberGenerator)
+comment1.params=obj\ o
+comment1.target=void\ update(Observable,\ Object)
+numComments=2
