@@ -56,7 +56,6 @@ public class Mobile {
 	
 //	Print a structured view of the mobile
 	public void prettyPrint() {
-	      // ...
 		if (isSimple())
 			System.out.print("(" + weight + ")");
 		else {
@@ -80,11 +79,10 @@ public class Mobile {
 
 // Determine if two mobiles are equal	
 	public boolean equals(  Object rhs ) {
-	    // ...
 		// Is rhs a mobile?
 		if (!(rhs instanceof Mobile) || rhs == null)
 			return false;
-		// To avoid cast with small variable, to a permanent cast
+		// To avoid cast with small variable, do a permanent cast
 		Mobile other = (Mobile)rhs;
 		/* Floats are slightly unpredictable. We need something small to 
 		use when comparing floats to allow for this unpredictability */
