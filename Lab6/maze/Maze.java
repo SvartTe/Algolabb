@@ -9,7 +9,7 @@ public class Maze extends Board {
 	
 	public Maze( int rows, int cols ) {
 		super(rows,cols);
-		extendo = new ExtendedGraph();
+		extendo = new ExtendedGraph(this);
 		// Stop the user from making a single room house
 		if (rows == 1 && cols == 1) {
 			System.out.println("Don't be silly now... No one likes a smartass.");
@@ -25,17 +25,15 @@ public class Maze extends Board {
 		// ID Board.maxCell is end position
 		// Begin crashing
 		Random rng = new Random();
-		boolean jobDone = false;
 		int rand1, rand2;
+		int wallsBroken = 0;
 		Point neighbor;
 		Pair<Point, Point> pear;
-		
-		this.addObserver(extendo);
 		
 		this.setChanged();
 		notifyObservers();
 		
-		while(!jobDone){		
+		while(wallsBroken < maxCell - 1){		
 															
 			rand1 = rng.nextInt(maxCell);
 			rand2 = rng.nextInt(maxCell);
@@ -51,14 +49,11 @@ public class Maze extends Board {
 					pear = new Pair<Point, Point>(	new Point(getRow(rand1), getCol(rand1)),
 													neighbor);
 					doors.union(doors.find(rand1),doors.find(rand2));		// I now declare you husband/wife/Object and husband/wife/Object
+					wallsBroken++;
+					extendo.addEdge(rand1, rand2, 1);
+					extendo.addEdge(rand2, rand1, 1);
 					this.setChanged();
 					notifyObservers(pear);
-					for(int i = 1 ; i < maxCell ; i++){
-						if(doors.find(0) != doors.find(i))
-							break;						// WORK WORK
-						if(i == maxCell - 1)
-							jobDone = true;				// JOB DONE
-					}
 				}
 			}
 			
@@ -66,7 +61,7 @@ public class Maze extends Board {
 	}
 
 	public void search() {
-		extendo.dijkstra(0);
+		extendo.unweighted(0);
 		List<Integer> rutor = extendo.getPath(maxCell-1);
 		
 		for(Integer punkter: rutor) {
