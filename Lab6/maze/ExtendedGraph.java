@@ -5,8 +5,14 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class ExtendedGraph extends Graph implements Observer{
+public class ExtendedGraph extends Graph{
 
+	ExtendedGraph(Maze o){
+		super();
+		for (int i = 0; i < ((Maze)o).maxCell; i++)
+			vertexMap.put(i, new Vertex(i));		// The maze has been created, so all the cells get a vertex
+	}
+	
 	public List<Integer> getPath (int destName) {
 		// Test if destName exists
 		Vertex w = vertexMap.get( destName );
@@ -26,27 +32,9 @@ public class ExtendedGraph extends Graph implements Observer{
 		
 		if( dest.prev != null )
         {
-            listz.addAll(getPath( dest.prev ));
+            listz = getPath( dest.prev );
         }
         listz.add(dest.name);
 		return listz;
 	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		if(	arg instanceof Pair<?,?> && 
-				( ((Pair) arg).first instanceof Point && 
-				((Pair) arg).second instanceof Point )){
-				Point first = (Point) ((Pair) arg).first;	// To avoid cast with small variable
-				Point second = (Point) ((Pair) arg).second;
-				Maze majs = (Maze)o;
-				vertexMap.get(majs.getCellId(first)).adj.add(new Edge(vertexMap.get(majs.getCellId(second)), 1.0));
-				vertexMap.get(majs.getCellId(second)).adj.add(new Edge(vertexMap.get(majs.getCellId(first)), 1.0));
-		} 
-		else {
-			for (int i = 0; i < ((Maze)o).maxCell; i++)
-				vertexMap.put(i, new Vertex(i));		// The maze has been created, so all the cells get a vertex
-		}
-	}
-
 }
