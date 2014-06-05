@@ -97,6 +97,7 @@ public class BoardDisplay extends Board implements Observer {
 			fillCell((Integer)arg);
 		}
 		else {
+			canvas.erase();
 			drawGrid();
 			knockDownWall(0, Point.Direction.LEFT);
 			knockDownWall(0, Point.Direction.UP);
