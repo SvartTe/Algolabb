@@ -37,13 +37,21 @@ public class Mobile {
 	
 	// Return the maximum height of the mobile
 	public int getHeight() {
-	    // ...
-		return 0;
+		if (isSimple())
+			return 1;
+		else
+			return Math.max(left.getHeight(), right.getHeight() + 1);
 	}  
 	
 	// Print the leaves of the mobile
 	public void flatten()  {
-	      // ...
+	      if (isSimple())
+	    	  System.out.print(weight + " ");
+	      else {
+	    	  // Change the order here to print backwards
+	    	  left.flatten();
+	    	  right.flatten();
+	      }
 	}  
 	
 //	Print a structured view of the mobile
@@ -88,8 +96,8 @@ public class Mobile {
 	
 		System.out.println("Total mass: " + m.getWeight() );
 
-		//System.out.println("Height:     " + m.getHeight() );
-		//m.flatten(); System.out.println();
+		System.out.println("Height:     " + m.getHeight() );
+		m.flatten(); System.out.println();
 		//m.prettyPrint(); System.out.println();
 		if ( m.isBalanced() )
 			System.out.println("Balanced!");
