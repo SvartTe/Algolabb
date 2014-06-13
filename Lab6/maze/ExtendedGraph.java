@@ -6,12 +6,6 @@ import java.util.Observer;
 
 
 public class ExtendedGraph extends Graph{
-
-	ExtendedGraph(Maze o){
-		super();
-		for (int i = 0; i < ((Maze)o).maxCell; i++)
-			vertexMap.put(i, new Vertex(i));		// The maze has been created, so all the cells get a vertex
-	}
 	
 	public List<Integer> getPath (int destName) {
 		// Test if destName exists

@@ -9,7 +9,7 @@ public class Maze extends Board {
 	
 	public Maze( int rows, int cols ) {
 		super(rows,cols);
-		extendo = new ExtendedGraph(this);
+		extendo = new ExtendedGraph();
 		// Stop the user from making a single room house
 		if (rows == 1 && cols == 1) {
 			System.out.println("Don't be silly now... No one likes a smartass.");
@@ -25,7 +25,7 @@ public class Maze extends Board {
 		// ID Board.maxCell is end position
 		// Begin crashing
 		Random rng = new Random();
-		int rand1, rand2;
+		int rand1, rand2, rand3;
 		int wallsBroken = 0;
 		Point neighbor;
 		Pair<Point, Point> pear;
@@ -36,10 +36,34 @@ public class Maze extends Board {
 		while(wallsBroken < maxCell - 1){		
 															
 			rand1 = rng.nextInt(maxCell);
-			rand2 = rng.nextInt(maxCell);
+			rand3 = rng.nextInt(3);
 			
-			while(rand1 == rand2)
-				rand2 = rng.nextInt(maxCell);	// Make sure that rand1 and rand2 are different
+			switch(rand3){
+			case 0:	// Case North
+				if(isValid(new Point(getRow(rand1) - 1, getCol(rand1)))) {
+					rand2 = rand1 - maxCol;
+					break;
+				}
+			case 1:	// Case East
+				if(isValid(new Point(getRow(rand1), getCol(rand1) + 1))){
+					rand2 = rand1 + 1;
+					break;
+				}
+			case 2: // Case South
+				if(isValid(new Point(getRow(rand1) + 1, getCol(rand1)))){
+					rand2 = rand1 + maxCol;
+					break;
+				}
+			case 3: // Case West
+				if(isValid(new Point(getRow(rand1), getCol(rand1) - 1))){
+					rand2 = rand1 - 1;
+					break;
+				}
+			default:
+				rand2 = rng.nextInt(maxCell);
+			}
+			
+				
 			
 			if(doors.find(rand1) != doors.find(rand2)){	// Make sure that there is not already a union
 				neighbor = new Point(getRow(rand1), getCol(rand1));		// Create a point with the coordinates of rand1's cellID
